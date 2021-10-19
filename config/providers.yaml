@@ -1,0 +1,4 @@
+Music-Server:
+  BootApp:
+    - SwowCloud\MusicServer\Config\ConfigProvider
+    - SwowCloud\MusicServer\Server\ServerProvider

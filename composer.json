@@ -20,7 +20,6 @@
   },
   "require": {
     "php": ">=8.0",
-    "swow/swow": "dev-develop",
     "ext-bcmath": "*",
     "ext-iconv": "*",
     "ext-pdo": "*",
@@ -32,6 +31,8 @@
     "hyperf/engine-swow": "^1.2",
     "hyperf/pool": "2.2.*",
     "hyperf/utils": "2.2.*",
+    "swow/swow": "dev-develop",
+    "symfony/config": "^5.3",
     "symfony/console": "^5.3",
     "symfony/serializer": "^5.3",
     "symfony/serializer-pack": "^1.0",
