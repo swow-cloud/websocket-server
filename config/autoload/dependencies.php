@@ -9,7 +9,7 @@ declare(strict_types=1);
 use Hyperf\Contract\ConfigInterface;
 use SwowCloud\MusicServer\Config\ConfigFactory;
 use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
-use SwowCloud\MusicServer\Logger\StdoutLogger;
+use SwowCloud\MusicServer\Kernel\Logger\StdoutLogger;
 
 return [
     ConfigInterface::class => ConfigFactory::class,

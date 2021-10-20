@@ -6,14 +6,16 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer;
+namespace Serendipity\Job;
 
 use Dotenv\Dotenv;
 use Hyperf\Di\Container;
 use Psr\Container\ContainerInterface;
+use Serendipity\Job\Config\Loader\YamlLoader;
+use Serendipity\Job\Console\DagJobCommand;
+use Serendipity\Job\Console\JobCommand;
+use Serendipity\Job\Console\SerendipityJobCommand;
 use Swow\Debug\Debugger;
-use SwowCloud\MusicServer\Config\Loader\YamlLoader;
-use SwowCloud\MusicServer\Console\ServerCommand;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\Console\Application as SymfonyApplication;
@@ -30,11 +32,13 @@ final class Application extends SymfonyApplication
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        parent::__construct('MusicServer Console Tool...');
+        parent::__construct('Serendipity Job Console Tool...');
         $this->initialize();
         $this->debug();
         $this->addCommands([
-            new ServerCommand(),
+            new SerendipityJobCommand(),
+            new JobCommand($container),
+            new DagJobCommand($container),
         ]);
     }
 
@@ -66,7 +70,7 @@ final class Application extends SymfonyApplication
     protected function debug(): void
     {
         if (env('DEBUG')) {
-            Debugger::runOnTTY('music-server');
+            Debugger::runOnTTY('serendipity-job');
         }
     }
 }

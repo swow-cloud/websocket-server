@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Logger;
+namespace SwowCloud\MusicServer\Kernel\Logger;
 
 use Hyperf\Utils\Context;
 use Monolog\Processor\MemoryProcessor;

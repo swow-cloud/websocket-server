@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Formatter\LineFormatter;
-use SwowCloud\MusicServer\Logger\AppendRequestIdProcessor;
+use SwowCloud\MusicServer\Kernel\Logger\AppendRequestIdProcessor;
 
 return [
     'default' => [

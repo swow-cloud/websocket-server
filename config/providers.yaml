@@ -1,4 +1,6 @@
 Music-Server:
   BootApp:
     - SwowCloud\MusicServer\Config\ConfigProvider
+    - SwowCloud\MusicServer\Event\EventProvider
+    - SwowCloud\MusicServer\Logger\LoggerProvider
     - SwowCloud\MusicServer\Server\ServerProvider

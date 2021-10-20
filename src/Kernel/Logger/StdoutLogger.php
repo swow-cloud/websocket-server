@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Logger;
+namespace SwowCloud\MusicServer\Kernel\Logger;
 
 use Hyperf\Contract\ConfigInterface;
 use Psr\Log\LogLevel;

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Serendipity\Job\Kernel\Swow;
+namespace SwowCloud\MusicServer\Kernel\Swow;
 
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
