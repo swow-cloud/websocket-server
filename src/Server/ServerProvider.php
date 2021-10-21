@@ -13,8 +13,11 @@ use Hyperf\Engine\Channel;
 use Hyperf\Utils\Context;
 use Hyperf\Utils\Coroutine as SwowCoroutine;
 use Psr\Http\Message\RequestInterface;
+use Swow\Http\Server\Connection;
 use Swow\Http\Server\Request as SwowRequest;
 use Swow\Http\Status;
+use Swow\WebSocket\Frame;
+use Swow\WebSocket\Opcode;
 use SwowCloud\MusicServer\Contract\LoggerInterface;
 use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
 use SwowCloud\MusicServer\Kernel\Http\Request;
@@ -59,7 +62,6 @@ class ServerProvider extends AbstractProvider
         while (true) {
             try {
                 $connection = $server->acceptConnection();
-                dump($connection);
                 SwowCoroutine::create(function () use ($connection) {
                     try {
                         while (true) {
@@ -70,8 +72,11 @@ class ServerProvider extends AbstractProvider
                                  * @var Request $request
                                  */
                                 $request = $connection->recvHttpRequest(make(Request::class));
-                                $response = $this->dispatcher($request);
-                                $connection->sendHttpResponse($response);
+                                $response = $this->dispatcher($request, $connection);
+                                if ($response instanceof Response) {
+                                    $connection->sendHttpResponse($response);
+                                }
+                                continue;
                             } catch (Throwable $exception) {
                                 if ($exception instanceof HttpException) {
                                     $connection->error($exception->getCode(), $exception->getMessage());
@@ -133,23 +138,58 @@ class ServerProvider extends AbstractProvider
     {
         $this->fastRouteDispatcher = simpleDispatcher(function (RouteCollector $router) {
             $router->get('/chat', function (): Response {
-                $response = new Response();
-                $response->text(file_get_contents(BASE_PATH . '/public/chat.html'));
+                /**
+                 * @var Request $request
+                 */
+                $request = Context::get(RequestInterface::class);
+                if ($upgrade = $request->getUpgrade()) {
+                    /**
+                     * @var \Swow\Http\Server\Connection $connection
+                     */
+                    $connection = Context::get('connection');
 
-                return $response;
+                    if ($upgrade === $request::UPGRADE_WEBSOCKET) {
+                        $connection->upgradeToWebSocket($request);
+                        $request = null;
+                        while (true) {
+                            $frame = $connection->recvWebSocketFrame();
+                            $opcode = $frame->getOpcode();
+                            switch ($opcode) {
+                                case Opcode::PING:
+                                    $connection->sendString(Frame::PONG);
+                                    break;
+                                case Opcode::PONG:
+                                    break;
+                                case Opcode::CLOSE:
+                                    break 2;
+                                default:
+                                    $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
+                                    $connection->sendWebSocketFrame($frame);
+                            }
+                        }
+                    }
+                    throw new HttpException(HttpStatus::BAD_REQUEST, 'Unsupported Upgrade Type');
+                } else {
+                    $response = new Response();
+                    $response->text(file_get_contents(BASE_PATH . '/public/chat.html'));
+
+                    return $response;
+                }
             });
         }, [
             'routeCollector' => RouteCollector::class,
         ]);
     }
 
-    protected function dispatcher(SwowRequest $request): Response
+    protected function dispatcher(SwowRequest $request, Connection $connection): Response|bool
     {
         $channel = new Channel();
-        SwowCoroutine::create(function () use ($request, $channel) {
+        SwowCoroutine::create(function () use ($request, $channel, $connection) {
             SwowCoroutine::defer(function () {
                 Context::destroy(RequestInterface::class);
+                Context::destroy('connection');
             });
+            Context::set('connection', $connection);
             Context::set(RequestInterface::class, $request);
             $uri = $request->getPath();
             $method = $request->getMethod();
@@ -180,8 +220,11 @@ class ServerProvider extends AbstractProvider
                         break;
                     }
             }
-
-            $channel->push($response);
+            if ($response instanceof Response) {
+                $channel->push($response);
+            } else {
+                $channel->push(true);
+            }
         });
 
         return $channel->pop();
