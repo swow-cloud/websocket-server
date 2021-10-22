@@ -34,7 +34,7 @@ use const Swow\Errno\ENOMEM;
 
 /**
  * Class ServerProvider
- * @todo 1.开发api
+ * @todo 1.api还是原来的项目
  * @todo 2.开发ws
  */
 class ServerProvider extends AbstractProvider
@@ -151,8 +151,11 @@ class ServerProvider extends AbstractProvider
                     $connection = Context::get('connection');
 
                     if ($upgrade === $request::UPGRADE_WEBSOCKET) {
+                        //可以在这里处理握手的问题 鉴权失败$connection->error(40x)
+                        //return $connection->error(\Swow\WebSocket\Status::INTERNAL_ERROR,'');
                         $connection->upgradeToWebSocket($request);
                         $request = null;
+                        //类似于swoole的 onOpen onMessage onClose每个事件单独开启新协程,而swow是在你同一个协程
                         while (true) {
                             $frame = $connection->recvWebSocketFrame();
                             $opcode = $frame->getOpcode();
@@ -160,9 +163,11 @@ class ServerProvider extends AbstractProvider
                                 case Opcode::PING:
                                     $connection->sendString(Frame::PONG);
                                     break;
+                                case Opcode::BINARY:
                                 case Opcode::PONG:
                                     break;
                                 case Opcode::CLOSE:
+                                    $this->stdoutLogger->debug('客户端断开');
                                     break 2;
                                 default:
                                     $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
