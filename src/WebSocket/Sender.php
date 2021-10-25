@@ -6,9 +6,11 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket;
+namespace SwowCloud\MusicServer\WebSocket;
 
 use Psr\Container\ContainerInterface;
+use Swow\Http\Exception;
+use Swow\Http\Status;
 use Swow\Socket\Exception as SocketException;
 use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
 
@@ -29,8 +31,20 @@ class Sender
 
     public function push(int $fd, mixed $message, ?int $timeout = null): void
     {
-        $connection = FdContext::get($fd);
-        $connection?->sendString($message, $timeout);
+        try {
+            $connection = FdContext::get($fd);
+            if ($connection?->getType() !== $connection::TYPE_WEBSOCKET) {
+                throw new Exception(Status::BAD_GATEWAY, 'Unsupported Upgrade Type');
+            }
+            if (is_string($message)) {
+                $connection?->sendString($message, $timeout);
+            } else {
+                $connection?->sendWebSocketFrame($message);
+            }
+            $this->logger->debug("[WebSocket] send to #{$fd}");
+        } catch (SocketException $e) {
+            $this->logger->error(sprintf('[WebSocket] send to #%s failed: %s', $fd, $e->getMessage()));
+        }
     }
 
     public function disconnect(int $fd): void
@@ -55,7 +69,9 @@ class Sender
                 }
             } catch (SocketException $exception) {
                 /* ignore */
+                $this->logger->error($exception->getMessage());
             }
         }
+        $this->logger->debug('[WebSocket] send to broadcast message#');
     }
 }

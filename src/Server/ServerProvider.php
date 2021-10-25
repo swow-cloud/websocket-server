@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace SwowCloud\MusicServer\Server;
 
+use Carbon\Carbon;
 use FastRoute\Dispatcher;
 use Hyperf\Engine\Channel;
 use Hyperf\Utils\Context;
@@ -26,7 +27,7 @@ use SwowCloud\MusicServer\Kernel\Provider\AbstractProvider;
 use SwowCloud\MusicServer\Kernel\Router\RouteCollector;
 use SwowCloud\MusicServer\Kernel\Swow\ServerFactory;
 use SwowCloud\MusicServer\Logger\LoggerFactory;
-use SwowCloud\WebSocket\FdContext;
+use SwowCloud\MusicServer\WebSocket\FdContext;
 use Throwable;
 use function FastRoute\simpleDispatcher;
 use const Swow\Errno\EMFILE;
@@ -61,6 +62,7 @@ class ServerProvider extends AbstractProvider
             ->get();
         $this->stdoutLogger->debug('MusicServer Start Successfully#');
         $this->makeFastRoute();
+        $this->loop();
 
         while (true) {
             try {
@@ -170,8 +172,8 @@ class ServerProvider extends AbstractProvider
                                 case Opcode::PONG:
                                     break;
                                 case Opcode::CLOSE:
+                                    $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
                                     FdContext::offline($connection->getFd());
-                                    $this->stdoutLogger->debug('客户端断开');
                                     break 2;
                                 default:
                                     $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
@@ -239,5 +241,15 @@ class ServerProvider extends AbstractProvider
         });
 
         return $channel->pop();
+    }
+
+    protected function loop(): void
+    {
+        SwowCoroutine::create(function () {
+            while (true) {
+                $this->stdoutLogger->debug(sprintf('[WebSocket] current connections#%s [%s]', FdContext::getActiveConnections(), Carbon::now()->toDateTimeString()));
+                sleep(10);
+            }
+        });
     }
 }

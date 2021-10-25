@@ -7,7 +7,6 @@
 declare(strict_types=1);
 
 use Monolog\Formatter\JsonFormatter;
-use Monolog\Formatter\LineFormatter;
 use SwowCloud\MusicServer\Kernel\Logger\AppendRequestIdProcessor;
 
 return [
@@ -15,7 +14,7 @@ return [
         'handler' => [
             'class' => Monolog\Handler\RotatingFileHandler::class,
             'constructor' => [
-                'filename' => BASE_PATH . '/runtimes/logs/server/serendipity_server.log',
+                'filename' => BASE_PATH . '/runtimes/logs/server/music-server.log',
                 'maxFiles' => 5,
                 'level' => Monolog\Logger::DEBUG,
             ],
@@ -33,34 +32,11 @@ return [
             ],
         ],
     ],
-    'job' => [
-        'handler' => [
-            'class' => Monolog\Handler\RotatingFileHandler::class,
-            'constructor' => [
-                'filename' => BASE_PATH . '/runtimes/logs/job/serendipity_job.log',
-                'maxFiles' => 5,
-                'level' => Monolog\Logger::DEBUG,
-            ],
-        ],
-        'formatter' => [
-            'class' => LineFormatter::class,
-            'constructor' => [
-                'format' => null,
-                'dateFormat' => 'Y-m-d H:i:s',
-                'allowInlineLineBreaks' => true,
-            ],
-        ],
-        'processors' => [
-            [
-                'class' => AppendRequestIdProcessor::class,
-            ],
-        ],
-    ],
     'sql' => [
         'handler' => [
             'class' => Monolog\Handler\RotatingFileHandler::class,
             'constructor' => [
-                'filename' => BASE_PATH . '/runtimes/logs/sql/sql.log',
+                'filename' => BASE_PATH . '/runtimes/logs/sql/music-sql.log',
                 'level' => Monolog\Logger::DEBUG,
             ],
         ],

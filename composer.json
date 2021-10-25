@@ -25,6 +25,7 @@
     "ext-pdo": "*",
     "ext-redis": ">=5.3",
     "ext-sockets": "*",
+    "carbondate/carbon": "^1.33",
     "guzzlehttp/guzzle": "^7.3",
     "hyperf/contract": "2.2.*",
     "hyperf/di": "2.2.*",
