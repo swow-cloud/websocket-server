@@ -11,6 +11,7 @@ namespace SwowCloud\MusicServer\WebSocket;
 use Psr\Container\ContainerInterface;
 use Swow\Http\Exception;
 use Swow\Http\Status;
+use Swow\Http\WebSocketFrame;
 use Swow\Socket\Exception as SocketException;
 use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
 
@@ -29,7 +30,7 @@ class Sender
         $this->logger = $this->container->get(StdoutLoggerInterface::class);
     }
 
-    public function push(int $fd, mixed $message, ?int $timeout = null): void
+    public function push(int $fd, string|WebSocketFrame $message, ?int $timeout = null): void
     {
         try {
             $connection = FdContext::get($fd);
@@ -52,7 +53,7 @@ class Sender
         FdContext::offline($fd);
     }
 
-    public function broadcastMessage(mixed $message, array $connections = null): void
+    public function broadcastMessage(string|WebSocketFrame $message, array $connections = null): void
     {
         if ($connections === null) {
             $connections = FdContext::getConnections();
