@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace SwowCloud\MusicServer\WebSocket;
 
 use Swow\Http\Server\Connection;
+use SwowCloud\MusicServer\WebSocket\Exception\BadRequestException;
 
 class FdContext
 {
@@ -39,9 +40,9 @@ class FdContext
         return self::$connections;
     }
 
-    public static function get(int $fd, ?Connection $connection = null): ?Connection
+    public static function get(int $fd): ?Connection
     {
-        return self::$connections[$fd] ?? $connection;
+        return self::$connections[$fd] ?? throw new BadRequestException('Unknown connection#');
     }
 
     public static function closeConnections(): void

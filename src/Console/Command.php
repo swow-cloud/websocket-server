@@ -186,7 +186,14 @@ abstract class Command extends SymfonyCommand
                 env('APP_NAME'), PHP_VERSION, VERSION, env('APP_VERSION'),
             ],
         ]);
-        //$this->output->writeln(sprintf('<info>%s</info>', Logo::LOGO));
+        $this->output->writeln(sprintf('<info>%s</info>', <<<'LOGO'
+ __  __           _          ____                           
+|  \/  |_   _ ___(_) ___    / ___|  ___ _ ____   _____ _ __ 
+| |\/| | | | / __| |/ __|___\___ \ / _ \ '__\ \ / / _ \ '__|
+| |  | | |_| \__ \ | (_|_____|__) |  __/ |   \ V /  __/ |   
+|_|  |_|\__,_|___/_|\___|   |____/ \___|_|    \_/ \___|_|   
+                                                            
+LOGO));
         $this->output->writeln([
             '<info>MusicServer For Swow-Cloud</info>',
             '<info>===================================</info>',

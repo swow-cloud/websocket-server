@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace SwowCloud\MusicServer\WebSocket;
 
+use Hyperf\Utils\Codec\Json;
+
 class Message
 {
-    public static function pack(): void
+    public static function pack(array $message): string
     {
+        return Json::encode($message);
     }
 
-    public static function unpack(): void
+    public static function unpack(string $message): array
     {
+        return Json::decode($message);
     }
 }

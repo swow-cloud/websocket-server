@@ -14,6 +14,7 @@ use Swow\Http\Status;
 use Swow\Http\WebSocketFrame;
 use Swow\Socket\Exception as SocketException;
 use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
+use SwowCloud\MusicServer\WebSocket\Exception\BadRequestException;
 
 class Sender
 {
@@ -43,7 +44,7 @@ class Sender
                 $connection?->sendWebSocketFrame($message);
             }
             $this->logger->debug("[WebSocket] send to #{$fd}");
-        } catch (SocketException $e) {
+        } catch (SocketException|BadRequestException $e) {
             $this->logger->error(sprintf('[WebSocket] send to #%s failed: %s', $fd, $e->getMessage()));
         }
     }
