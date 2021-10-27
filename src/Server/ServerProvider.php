@@ -91,29 +91,31 @@ class ServerProvider extends AbstractProvider
                                 if ($request === null) {
                                     return;
                                 }
-                                /*@var LoggerInterface $logger */
-                                $logger = $this->container()
-                                    ->get(LoggerFactory::class)
-                                    ->get('request');
-                                // 日志
-                                $time = microtime(true) - $time;
-                                $debug = 'URI: ' . $request->getUri()->getPath() . PHP_EOL;
-                                $debug .= 'TIME: ' . $time * 1000 . 'ms' . PHP_EOL;
-                                if ($customData = $request->getCustomData()) {
-                                    $debug .= 'DATA: ' . $customData . PHP_EOL;
-                                }
-                                $debug .= 'REQUEST: ' . $request->getRequestString() . PHP_EOL;
-                                if (isset($response)) {
-                                    $debug .= 'RESPONSE: ' . $request->getResponseString($response) . PHP_EOL;
-                                }
-                                if (isset($exception) && $exception instanceof Throwable) {
-                                    $debug .= 'EXCEPTION: ' . $exception->getMessage() . PHP_EOL;
-                                }
+                                if (env('DEBUG')) {
+                                    /*@var LoggerInterface $logger */
+                                    $logger = $this->container()
+                                        ->get(LoggerFactory::class)
+                                        ->get('request');
+                                    // 日志
+                                    $time = microtime(true) - $time;
+                                    $debug = 'URI: ' . $request->getUri()->getPath() . PHP_EOL;
+                                    $debug .= 'TIME: ' . $time * 1000 . 'ms' . PHP_EOL;
+                                    if ($customData = $request->getCustomData()) {
+                                        $debug .= 'DATA: ' . $customData . PHP_EOL;
+                                    }
+                                    $debug .= 'REQUEST: ' . $request->getRequestString() . PHP_EOL;
+                                    if (isset($response)) {
+                                        $debug .= 'RESPONSE: ' . $request->getResponseString($response) . PHP_EOL;
+                                    }
+                                    if (isset($exception) && $exception instanceof Throwable) {
+                                        $debug .= 'EXCEPTION: ' . $exception->getMessage() . PHP_EOL;
+                                    }
 
-                                if ($time > 1) {
-                                    $logger->error($debug);
-                                } else {
-                                    $logger->info($debug);
+                                    if ($time > 1) {
+                                        $logger->error($debug);
+                                    } else {
+                                        $logger->info($debug);
+                                    }
                                 }
                             }
                             if (!$request->getKeepAlive()) {
@@ -160,7 +162,7 @@ class ServerProvider extends AbstractProvider
                         FdContext::add($connection);
                         $connection->upgradeToWebSocket($request);
                         $request = null;
-                        //类似于swoole的 onOpen onMessage onClose每个事件单独开启新协程,而swow是在你同一个协程
+                        //类似于swoole的 onOpen onMessage onClose每个事件单独开启新协程,而swow是在同一个协程
                         while (true) {
                             $frame = $connection->recvWebSocketFrame();
                             $opcode = $frame->getOpcode();
