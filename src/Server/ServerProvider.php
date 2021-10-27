@@ -27,7 +27,7 @@ use SwowCloud\MusicServer\Kernel\Provider\AbstractProvider;
 use SwowCloud\MusicServer\Kernel\Router\RouteCollector;
 use SwowCloud\MusicServer\Kernel\Swow\ServerFactory;
 use SwowCloud\MusicServer\Logger\LoggerFactory;
-use SwowCloud\MusicServer\WebSocket\FdContext;
+use SwowCloud\MusicServer\WebSocket\FdCollector;
 use Throwable;
 use function FastRoute\simpleDispatcher;
 use const Swow\Errno\EMFILE;
@@ -36,8 +36,7 @@ use const Swow\Errno\ENOMEM;
 
 /**
  * Class ServerProvider
- * @todo 1.api还是原来的项目
- * @todo 2.开发ws
+ * @todo 1.开发ws
  */
 class ServerProvider extends AbstractProvider
 {
@@ -159,7 +158,6 @@ class ServerProvider extends AbstractProvider
                         //可以在这里处理握手的问题 鉴权失败$connection->error(40x)
                         //return $connection->error(\Swow\WebSocket\Status::INTERNAL_ERROR,'');
                         //添加ws会话
-                        FdContext::add($connection);
                         $connection->upgradeToWebSocket($request);
                         $request = null;
                         //类似于swoole的 onOpen onMessage onClose每个事件单独开启新协程,而swow是在同一个协程
@@ -175,7 +173,6 @@ class ServerProvider extends AbstractProvider
                                     break;
                                 case Opcode::CLOSE:
                                     $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
-                                    FdContext::offline($connection->getFd());
                                     break 2;
                                 default:
                                     $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
@@ -200,12 +197,14 @@ class ServerProvider extends AbstractProvider
     {
         $channel = new Channel();
         SwowCoroutine::create(function () use ($request, $channel, $connection) {
-            SwowCoroutine::defer(function () {
+            SwowCoroutine::defer(function () use ($connection) {
                 Context::destroy(RequestInterface::class);
                 Context::destroy('connection');
+                FdCollector::del($connection->getFd());
             });
             Context::set('connection', $connection);
             Context::set(RequestInterface::class, $request);
+            FdCollector::add($connection);
             $uri = $request->getPath();
             $method = $request->getMethod();
             if (false !== $pos = strpos($uri, '?')) {
@@ -249,7 +248,7 @@ class ServerProvider extends AbstractProvider
     {
         SwowCoroutine::create(function () {
             while (true) {
-                $this->stdoutLogger->debug(sprintf('[WebSocket] current connections#%s [%s]', FdContext::getActiveConnections(), Carbon::now()->toDateTimeString()));
+                $this->stdoutLogger->debug(sprintf('[WebSocket] current connections#%s [%s]', FdCollector::getActiveConnections(), Carbon::now()->toDateTimeString()));
                 sleep(10);
             }
         });

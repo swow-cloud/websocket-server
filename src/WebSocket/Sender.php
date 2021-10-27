@@ -31,17 +31,20 @@ class Sender
         $this->logger = $this->container->get(StdoutLoggerInterface::class);
     }
 
+    /**
+     * Push Message
+     */
     public function push(int $fd, string|WebSocketFrame $message, ?int $timeout = null): void
     {
         try {
-            $connection = FdContext::get($fd);
-            if ($connection?->getType() !== $connection::TYPE_WEBSOCKET) {
+            $connection = FdCollector::get($fd);
+            if ($connection->getType() !== $connection::TYPE_WEBSOCKET) {
                 throw new Exception(Status::BAD_GATEWAY, 'Unsupported Upgrade Type');
             }
             if (is_string($message)) {
-                $connection?->sendString($message, $timeout);
+                $connection->sendString($message, $timeout);
             } else {
-                $connection?->sendWebSocketFrame($message);
+                $connection->sendWebSocketFrame($message);
             }
             $this->logger->debug("[WebSocket] send to #{$fd}");
         } catch (SocketException|BadRequestException $e) {
@@ -49,15 +52,30 @@ class Sender
         }
     }
 
+    /**
+     * Disconnect
+     */
     public function disconnect(int $fd): void
     {
-        FdContext::offline($fd);
+        try {
+            $connection = FdCollector::get($fd);
+            if ($connection->getType() !== $connection::TYPE_WEBSOCKET) {
+                throw new Exception(Status::BAD_GATEWAY, 'Unsupported Upgrade Type');
+            }
+            $connection->close();
+            FdCollector::del($fd);
+        } catch (SocketException $e) {
+            $this->logger->error(sprintf('[WebSocket] closed to #%s failed: %s', $fd, $e->getMessage()));
+        }
     }
 
+    /**
+     * Broadcast message
+     */
     public function broadcastMessage(string|WebSocketFrame $message, array $connections = null): void
     {
         if ($connections === null) {
-            $connections = FdContext::getConnections();
+            $connections = FdCollector::getConnections();
         }
         foreach ($connections as $connection) {
             if ($connection->getType() !== $connection::TYPE_WEBSOCKET) {
