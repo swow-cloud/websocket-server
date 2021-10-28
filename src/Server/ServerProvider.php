@@ -14,6 +14,7 @@ use Hyperf\Engine\Channel;
 use Hyperf\Utils\Context;
 use Hyperf\Utils\Coroutine as SwowCoroutine;
 use Psr\Http\Message\RequestInterface;
+use Swow\Http\Exception as HttpException;
 use Swow\Http\Server\Connection;
 use Swow\Http\Server\Request as SwowRequest;
 use Swow\Http\Status;
@@ -248,7 +249,7 @@ class ServerProvider extends AbstractProvider
     {
         SwowCoroutine::create(function () {
             while (true) {
-                $this->stdoutLogger->debug(sprintf('[WebSocket] current connections#%s [%s]', FdCollector::getActiveConnections(), Carbon::now()->toDateTimeString()));
+                $this->stdoutLogger->debug(sprintf('[WebSocket] current connections#[%s] [%s]', FdCollector::getActiveConnections(), Carbon::now()->toDateTimeString()));
                 sleep(10);
             }
         });

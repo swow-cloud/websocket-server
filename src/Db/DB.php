@@ -61,7 +61,7 @@ class DB
                     $connection->release();
                 }
             }
-            //$this->logQuery($arguments[0], $arguments[1] ?? [], null, $result);
+            $this->logQuery($arguments[0], $arguments[1] ?? [], null, $result);
         }
 
         return $result;
