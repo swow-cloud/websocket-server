@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Console;
+namespace SwowCloud\WebSocket\Console;
 
 use Hyperf\Utils\Coroutine as SwowCoroutine;
-use SwowCloud\MusicServer\Kernel\Provider\KernelProvider;
+use SwowCloud\WebSocket\Kernel\Provider\KernelProvider;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 /**

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Console;
+namespace SwowCloud\WebSocket\Console;
 
 use Nette\Utils\Strings;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;

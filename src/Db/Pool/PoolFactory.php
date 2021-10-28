@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db\Pool;
+namespace SwowCloud\WebSocket\Db\Pool;
 
 use Hyperf\Contract\ConfigInterface;
 use Psr\Container\ContainerInterface;
-use SwowCloud\MusicServer\Db\Exception\DriverNotFoundException;
-use SwowCloud\MusicServer\Db\Exception\InvalidDriverException;
+use SwowCloud\WebSocket\Db\Exception\DriverNotFoundException;
+use SwowCloud\WebSocket\Db\Exception\InvalidDriverException;
 
 class PoolFactory
 {

@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db\Pool;
+namespace SwowCloud\WebSocket\Db\Pool;
 
 use Hyperf\Contract\ConnectionInterface;
-use SwowCloud\MusicServer\Db\PDOConnection;
+use SwowCloud\WebSocket\Db\PDOConnection;
 
 class PDOPool extends Pool
 {

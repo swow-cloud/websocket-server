@@ -6,22 +6,22 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\WebSocket;
+namespace SwowCloud\WebSocket\WebSocket;
 
 use Psr\Container\ContainerInterface;
 use Swow\Http\Exception;
 use Swow\Http\Status;
 use Swow\Http\WebSocketFrame;
 use Swow\Socket\Exception as SocketException;
-use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
-use SwowCloud\MusicServer\WebSocket\Exception\BadRequestException;
+use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\WebSocket\Exception\BadRequestException;
 
 class Sender
 {
     protected ContainerInterface $container;
 
     /**
-     * @var mixed|\SwowCloud\MusicServer\Contract\StdoutLoggerInterface
+     * @var mixed|\SwowCloud\WebSocket\Contract\StdoutLoggerInterface
      */
     protected StdoutLoggerInterface $logger;
 

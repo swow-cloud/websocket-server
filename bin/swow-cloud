@@ -4,7 +4,7 @@
 declare(strict_types = 1);
 
 use Psr\Container\ContainerInterface;
-use SwowCloud\MusicServer\Application;
+use SwowCloud\WebSocket\Application;
 
 define('BASE_PATH', dirname(__DIR__));
 ini_set('display_errors', 'on');

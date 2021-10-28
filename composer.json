@@ -10,12 +10,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "SwowCloud\\MusicServer\\": "src"
+      "SwowCloud\\WebSocket\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "SwowCloud\\MusicServerTest\\": "tests"
+      "SwowCloud\\WebSocketTest\\": "tests"
     }
   },
   "require": {

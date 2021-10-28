@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db;
+namespace SwowCloud\WebSocket\Db;
 
 use Hyperf\Pool\Connection;
 use Hyperf\Pool\Exception\ConnectionException;
-use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
 
 abstract class AbstractConnection extends Connection implements ConnectionInterface
 {

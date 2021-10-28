@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis\Lua;
+namespace SwowCloud\WebSocket\Redis\Lua;
 
 use Psr\Container\ContainerInterface;
 use Redis;
-use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
-use SwowCloud\MusicServer\Redis\Exception\RedisNotFoundException;
+use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Redis\Exception\RedisNotFoundException;
 
 abstract class Script implements ScriptInterface
 {

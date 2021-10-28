@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Http;
+namespace SwowCloud\WebSocket\Kernel\Http;
 
 use Hyperf\Utils\Codec\Json;
 use RuntimeException;

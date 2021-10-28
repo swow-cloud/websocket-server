@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Traits;
+namespace SwowCloud\WebSocket\Kernel\Traits;
 
 trait Singleton
 {

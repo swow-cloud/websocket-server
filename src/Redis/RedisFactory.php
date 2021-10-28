@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis;
+namespace SwowCloud\WebSocket\Redis;
 
 use Hyperf\Contract\ConfigInterface;
-use SwowCloud\MusicServer\Redis\Exception\InvalidRedisProxyException;
+use SwowCloud\WebSocket\Redis\Exception\InvalidRedisProxyException;
 
 class RedisFactory
 {

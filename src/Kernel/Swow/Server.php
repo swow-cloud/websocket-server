@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Swow;
+namespace SwowCloud\WebSocket\Kernel\Swow;
 
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Swow\Socket;
-use SwowCloud\MusicServer\Contract\ServerInterface;
-use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Contract\ServerInterface;
+use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
 
 class Server implements ServerInterface
 {

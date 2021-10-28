@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis\Lua;
+namespace SwowCloud\WebSocket\Redis\Lua;
 
 interface ScriptInterface
 {

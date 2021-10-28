@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Logger;
+namespace SwowCloud\WebSocket\Logger;
 
 use Monolog\Logger as MonoLogger;
-use SwowCloud\MusicServer\Contract\LoggerInterface;
+use SwowCloud\WebSocket\Contract\LoggerInterface;
 
 class Logger extends MonoLogger implements LoggerInterface
 {

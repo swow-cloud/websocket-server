@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Router;
+namespace SwowCloud\WebSocket\Kernel\Router;
 
 use FastRoute\RouteCollector as FastRouteCollector;
 

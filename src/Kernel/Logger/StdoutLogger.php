@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Logger;
+namespace SwowCloud\WebSocket\Kernel\Logger;
 
 use Hyperf\Contract\ConfigInterface;
 use Psr\Log\LogLevel;
-use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use function sprintf;

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db;
+namespace SwowCloud\WebSocket\Db;
 
 use Hyperf\Pool\Frequency as DefaultFrequency;
 

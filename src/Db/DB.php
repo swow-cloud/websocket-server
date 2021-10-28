@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db;
+namespace SwowCloud\WebSocket\Db;
 
 use Closure;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Utils\Context;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwowCloud\MusicServer\Db\Pool\PoolFactory;
+use SwowCloud\WebSocket\Db\Pool\PoolFactory;
 use Throwable;
 
 /**
@@ -130,7 +130,7 @@ class DB
             $static = $ref->getStaticVariables();
             if (array_key_exists('command', $static)) {
                 /**
-                 * @var \SwowCloud\MusicServer\Db\Command $command
+                 * @var \SwowCloud\WebSocket\Db\Command $command
                  */
                 $command = $static['command'];
                 $query = $command->getSql();

@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db;
+namespace SwowCloud\WebSocket\Db;
 
-use SwowCloud\MusicServer\Db\Exception\RuntimeException;
+use SwowCloud\WebSocket\Db\Exception\RuntimeException;
 
 class Command
 {

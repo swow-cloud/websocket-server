@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Server;
+namespace SwowCloud\WebSocket\Server;
 
 use Carbon\Carbon;
 use FastRoute\Dispatcher;
@@ -20,15 +20,15 @@ use Swow\Http\Server\Request as SwowRequest;
 use Swow\Http\Status;
 use Swow\WebSocket\Frame;
 use Swow\WebSocket\Opcode;
-use SwowCloud\MusicServer\Contract\LoggerInterface;
-use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
-use SwowCloud\MusicServer\Kernel\Http\Request;
-use SwowCloud\MusicServer\Kernel\Http\Response;
-use SwowCloud\MusicServer\Kernel\Provider\AbstractProvider;
-use SwowCloud\MusicServer\Kernel\Router\RouteCollector;
-use SwowCloud\MusicServer\Kernel\Swow\ServerFactory;
-use SwowCloud\MusicServer\Logger\LoggerFactory;
-use SwowCloud\MusicServer\WebSocket\FdCollector;
+use SwowCloud\WebSocket\Contract\LoggerInterface;
+use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Kernel\Http\Request;
+use SwowCloud\WebSocket\Kernel\Http\Response;
+use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
+use SwowCloud\WebSocket\Kernel\Router\RouteCollector;
+use SwowCloud\WebSocket\Kernel\Swow\ServerFactory;
+use SwowCloud\WebSocket\Logger\LoggerFactory;
+use SwowCloud\WebSocket\WebSocket\FdCollector;
 use Throwable;
 use function FastRoute\simpleDispatcher;
 use const Swow\Errno\EMFILE;
@@ -156,6 +156,8 @@ class ServerProvider extends AbstractProvider
                     $connection = Context::get('connection');
 
                     if ($upgrade === $request::UPGRADE_WEBSOCKET) {
+                        $middlewares = config('websocket.middleware');
+                        $handlers = config('websocket.handler');
                         //可以在这里处理握手的问题 鉴权失败$connection->error(40x)
                         //return $connection->error(\Swow\WebSocket\Status::INTERNAL_ERROR,'');
                         //添加ws会话
@@ -176,6 +178,7 @@ class ServerProvider extends AbstractProvider
                                     $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
                                     break 2;
                                 default:
+                                    //TODO Support Message
                                     $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
                                     $connection->sendWebSocketFrame($frame);
                             }

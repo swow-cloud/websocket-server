@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis\Pool;
+namespace SwowCloud\WebSocket\Redis\Pool;
 
 use Hyperf\Di\Container;
 use Psr\Container\ContainerInterface;

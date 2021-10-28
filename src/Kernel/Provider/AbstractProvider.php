@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Provider;
+namespace SwowCloud\WebSocket\Kernel\Provider;
 
 use Hyperf\Di\Container;
 use Hyperf\Utils\ApplicationContext;
 use JetBrains\PhpStorm\Pure;
 use Psr\Container\ContainerInterface;
-use SwowCloud\MusicServer\Config\ProviderConfig;
+use SwowCloud\WebSocket\Config\ProviderConfig;
 
 abstract class AbstractProvider implements ProviderContract
 {

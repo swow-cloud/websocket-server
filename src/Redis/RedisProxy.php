@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis;
+namespace SwowCloud\WebSocket\Redis;
 
 use JetBrains\PhpStorm\Pure;
-use SwowCloud\MusicServer\Redis\Pool\PoolFactory;
+use SwowCloud\WebSocket\Redis\Pool\PoolFactory;
 
 /**
  * @mixin \Redis

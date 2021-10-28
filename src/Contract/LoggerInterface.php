@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Contract;
+namespace SwowCloud\WebSocket\Contract;
 
 use Psr\Log\LoggerInterface as PsrLoggerInterface;
 

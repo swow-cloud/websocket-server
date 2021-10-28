@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Coroutine;
+namespace SwowCloud\WebSocket\Kernel\Coroutine;
 
 class ParallelExecutionException extends \RuntimeException
 {

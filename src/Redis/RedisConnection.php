@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis;
+namespace SwowCloud\WebSocket\Redis;
 
 use Hyperf\Pool\Connection as BaseConnection;
 use Hyperf\Pool\Exception\ConnectionException;
 use Hyperf\Pool\Pool;
 use Psr\Container\ContainerInterface;
-use SwowCloud\MusicServer\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
 
 /**
  * @method bool select(int $db)

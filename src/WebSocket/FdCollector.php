@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\WebSocket;
+namespace SwowCloud\WebSocket\WebSocket;
 
 use Swow\Http\Server\Connection;
-use SwowCloud\MusicServer\WebSocket\Exception\BadRequestException;
+use SwowCloud\WebSocket\WebSocket\Exception\BadRequestException;
 
 class FdCollector
 {

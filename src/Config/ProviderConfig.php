@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Config;
+namespace SwowCloud\WebSocket\Config;
 
 use Hyperf\Utils\ApplicationContext;
-use SwowCloud\MusicServer\Config\Loader\YamlLoader;
+use SwowCloud\WebSocket\Config\Loader\YamlLoader;
 use function class_exists;
 use function is_string;
 use function method_exists;

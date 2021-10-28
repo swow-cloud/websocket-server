@@ -7,7 +7,7 @@
 declare(strict_types=1);
 
 use Monolog\Formatter\JsonFormatter;
-use SwowCloud\MusicServer\Kernel\Logger\AppendRequestIdProcessor;
+use SwowCloud\WebSocket\Kernel\Logger\AppendRequestIdProcessor;
 
 return [
     'default' => [

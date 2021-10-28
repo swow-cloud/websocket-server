@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Logger;
+namespace SwowCloud\WebSocket\Logger;
 
-use SwowCloud\MusicServer\Kernel\Logger\StdoutLogger;
-use SwowCloud\MusicServer\Kernel\Provider\AbstractProvider;
+use SwowCloud\WebSocket\Kernel\Logger\StdoutLogger;
+use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
 
 class LoggerProvider extends AbstractProvider
 {

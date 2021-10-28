@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db\Pool;
+namespace SwowCloud\WebSocket\Db\Pool;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Pool\Pool as HyperfPool;
 use Hyperf\Utils\Arr;
 use Psr\Container\ContainerInterface;
-use SwowCloud\MusicServer\Db\Frequency;
+use SwowCloud\WebSocket\Db\Frequency;
 
 abstract class Pool extends HyperfPool
 {

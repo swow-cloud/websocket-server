@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis\Lua\Hash;
+namespace SwowCloud\WebSocket\Redis\Lua\Hash;
 
-use SwowCloud\MusicServer\Redis\Lua\Script;
+use SwowCloud\WebSocket\Redis\Lua\Script;
 
 class Incr extends Script
 {

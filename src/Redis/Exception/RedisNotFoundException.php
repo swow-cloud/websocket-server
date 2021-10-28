@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis\Exception;
+namespace SwowCloud\WebSocket\Redis\Exception;
 
 class RedisNotFoundException extends \RuntimeException
 {

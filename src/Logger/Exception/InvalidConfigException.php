@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Logger\Exception;
+namespace SwowCloud\WebSocket\Logger\Exception;
 
 class InvalidConfigException extends \RuntimeException
 {

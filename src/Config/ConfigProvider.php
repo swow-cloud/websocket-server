@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Config;
+namespace SwowCloud\WebSocket\Config;
 
 use Hyperf\Contract\ConfigInterface;
-use SwowCloud\MusicServer\Kernel\Provider\AbstractProvider;
+use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
 
 class ConfigProvider extends AbstractProvider
 {

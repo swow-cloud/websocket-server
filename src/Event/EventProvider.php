@@ -10,7 +10,7 @@ namespace Serendipity\Job\Event;
 
 use Hyperf\Contract\ConfigInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwowCloud\MusicServer\Kernel\Provider\AbstractProvider;
+use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

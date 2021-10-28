@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel\Provider;
+namespace SwowCloud\WebSocket\Kernel\Provider;
 
 interface ProviderContract
 {

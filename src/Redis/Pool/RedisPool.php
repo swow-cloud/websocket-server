@@ -6,15 +6,15 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis\Pool;
+namespace SwowCloud\WebSocket\Redis\Pool;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\ConnectionInterface;
 use Hyperf\Pool\Pool;
 use Hyperf\Utils\Arr;
 use Psr\Container\ContainerInterface;
-use SwowCloud\MusicServer\Redis\Frequency;
-use SwowCloud\MusicServer\Redis\RedisConnection;
+use SwowCloud\WebSocket\Redis\Frequency;
+use SwowCloud\WebSocket\Redis\RedisConnection;
 
 class RedisPool extends Pool
 {

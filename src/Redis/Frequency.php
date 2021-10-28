@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis;
+namespace SwowCloud\WebSocket\Redis;
 
 use Hyperf\Pool\Frequency as DefaultFrequency;
 

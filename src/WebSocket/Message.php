@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\WebSocket;
+namespace SwowCloud\WebSocket\WebSocket;
 
 use Hyperf\Utils\Codec\Json;
 

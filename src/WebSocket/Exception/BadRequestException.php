@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\WebSocket\Exception;
+namespace SwowCloud\WebSocket\WebSocket\Exception;
 
 class BadRequestException extends \RuntimeException
 {

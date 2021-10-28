@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Db\Exception;
+namespace SwowCloud\WebSocket\Db\Exception;
 
 class RuntimeException extends \RuntimeException
 {

@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Redis;
+namespace SwowCloud\WebSocket\Redis;
 
 use Hyperf\Utils\Context;
-use SwowCloud\MusicServer\Redis\Exception\InvalidRedisConnectionException;
-use SwowCloud\MusicServer\Redis\Pool\PoolFactory;
+use SwowCloud\WebSocket\Redis\Exception\InvalidRedisConnectionException;
+use SwowCloud\WebSocket\Redis\Pool\PoolFactory;
 
 /**
  * @mixin \Redis

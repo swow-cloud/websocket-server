@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Kernel;
+namespace SwowCloud\WebSocket\Kernel;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Utils\Str;

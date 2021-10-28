@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer\Event;
+namespace SwowCloud\WebSocket\Event;
 
 class EventDispatcher extends \Symfony\Component\EventDispatcher\EventDispatcher
 {
