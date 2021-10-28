@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\MusicServer;
+namespace SwowCloud\WebSocket;
 
 use Dotenv\Dotenv;
 use Hyperf\Di\Container;

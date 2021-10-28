@@ -156,8 +156,9 @@ class ServerProvider extends AbstractProvider
                     $connection = Context::get('connection');
 
                     if ($upgrade === $request::UPGRADE_WEBSOCKET) {
-                        $middlewares = config('websocket.middleware');
+                        $middlewares = config('websocket.middlewares');
                         $handlers = config('websocket.handler');
+
                         //可以在这里处理握手的问题 鉴权失败$connection->error(40x)
                         //return $connection->error(\Swow\WebSocket\Status::INTERNAL_ERROR,'');
                         //添加ws会话

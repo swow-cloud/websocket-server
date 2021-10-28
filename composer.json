@@ -11,7 +11,10 @@
   "autoload": {
     "psr-4": {
       "SwowCloud\\WebSocket\\": "src"
-    }
+    },
+    "files": [
+      "src/Kernel/functions.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
