@@ -38,7 +38,7 @@ class LoggerFactory
         $this->config = $container->get(ConfigInterface::class);
     }
 
-    public function make($name = 'serendipity', $group = 'default'): LoggerInterface
+    public function make($name = 'swow-cloud', $group = 'default'): LoggerInterface
     {
         $config = $this->config->get('logger');
         if (!isset($config[$group])) {
