@@ -56,7 +56,7 @@ class LoggerFactory
         ]);
     }
 
-    public function get($name = 'serendipity', $group = 'default'): LoggerInterface
+    public function get($name = 'swow-cloud', $group = 'default'): LoggerInterface
     {
         if (isset($this->loggers[$group][$name]) && $this->loggers[$group][$name] instanceof Logger) {
             return $this->loggers[$group][$name];
