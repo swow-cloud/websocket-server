@@ -8,10 +8,10 @@ declare(strict_types=1);
 
 namespace SwowCloud\WebSocket\WebSocket\Handler;
 
-use Psr\Http\Message\RequestInterface;
 use Swow\Http\Server\Connection;
+use Swow\WebSocket\Frame;
 
 interface HandlerInterface
 {
-    public function process(RequestInterface $request, Connection $connection): void;
+    public function process(Connection $connection, Frame $frame): void;
 }

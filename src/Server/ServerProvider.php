@@ -29,6 +29,8 @@ use SwowCloud\WebSocket\Kernel\Router\RouteCollector;
 use SwowCloud\WebSocket\Kernel\Swow\ServerFactory;
 use SwowCloud\WebSocket\Logger\LoggerFactory;
 use SwowCloud\WebSocket\WebSocket\FdCollector;
+use SwowCloud\WebSocket\WebSocket\Handler\HandlerInterface;
+use SwowCloud\WebSocket\WebSocket\Middleware\MiddlewareInterface;
 use Throwable;
 use function FastRoute\simpleDispatcher;
 use const Swow\Errno\EMFILE;
@@ -156,9 +158,22 @@ class ServerProvider extends AbstractProvider
                     $connection = Context::get('connection');
 
                     if ($upgrade === $request::UPGRADE_WEBSOCKET) {
+                        /**
+                         * @var MiddlewareInterface[] $middlewares
+                         */
                         $middlewares = config('websocket.middlewares');
-                        $handlers = config('websocket.handler');
-
+                        /**
+                         * @var HandlerInterface $handler
+                         */
+                        $handler = config('websocket.handler');
+                        $class = $this->container()->get($handler::class);
+                        if (!$class instanceof HandlerInterface) {
+                            throw new \InvalidArgumentException('Invalid handler');
+                        }
+                        $dispatcher = make(\SwowCloud\WebSocket\WebSocket\Middleware\Dispatcher::class, [
+                            'middlewares' => $middlewares,
+                        ]);
+                        $dispatcher->dispatch($request, $connection); //需要考虑如何停止中间件
                         //可以在这里处理握手的问题 鉴权失败$connection->error(40x)
                         //return $connection->error(\Swow\WebSocket\Status::INTERNAL_ERROR,'');
                         //添加ws会话
@@ -179,9 +194,7 @@ class ServerProvider extends AbstractProvider
                                     $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
                                     break 2;
                                 default:
-                                    //TODO Support Message
-                                    $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
-                                    $connection->sendWebSocketFrame($frame);
+                                    $handler->process($connection, $frame);
                             }
                         }
                     }
