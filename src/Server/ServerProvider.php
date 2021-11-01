@@ -13,6 +13,7 @@ use FastRoute\Dispatcher;
 use Hyperf\Engine\Channel;
 use Hyperf\Utils\Context;
 use Hyperf\Utils\Coroutine as SwowCoroutine;
+use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
 use Swow\Http\Exception as HttpException;
 use Swow\Http\Server\Connection;
@@ -170,7 +171,7 @@ class ServerProvider extends AbstractProvider
                             $handler = config('websocket.handler');
                             $class = $this->container()->get($handler::class);
                             if (!$class instanceof HandlerInterface) {
-                                throw new \InvalidArgumentException('Invalid handler');
+                                throw new InvalidArgumentException('Invalid handler');
                             }
                             $dispatcher = make(WsDispatcher::class, [
                                 'middlewares' => $middlewares,
@@ -197,9 +198,11 @@ class ServerProvider extends AbstractProvider
                             }
                         } catch (Throwable $e) {
                             if ($e instanceof HttpException) {
+                                /** @noinspection PhpVoidFunctionResultUsedInspection */
                                 return $connection->error($e->getCode(), $e->getMessage());
                             }
 
+                            /** @noinspection PhpVoidFunctionResultUsedInspection */
                             return $connection->error(Status::INTERNAL_SERVER_ERROR, $e->getMessage());
                         }
                     }
