@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace SwowCloud\WebSocket\Server;
 
 use Carbon\Carbon;
+use DebugBacktraceHtml;
 use FastRoute\Dispatcher;
 use Hyperf\Engine\Channel;
 use Hyperf\Utils\Context;
@@ -120,6 +121,7 @@ class ServerProvider extends AbstractProvider
                                     } else {
                                         $logger->info($debug);
                                     }
+                                    file_put_contents(BASE_PATH . '/runtimes/debug/' . uniqid('debug', true) . '.html', DebugBacktraceHtml::getDump(DebugBacktraceHtml::getBacktraces()));
                                 }
                             }
                             if (!$request->getKeepAlive()) {
@@ -198,11 +200,11 @@ class ServerProvider extends AbstractProvider
                             }
                         } catch (Throwable $e) {
                             if ($e instanceof HttpException) {
-                                /** @noinspection PhpVoidFunctionResultUsedInspection */
+                                /* @noinspection PhpVoidFunctionResultUsedInspection */
                                 return $connection->error($e->getCode(), $e->getMessage());
                             }
 
-                            /** @noinspection PhpVoidFunctionResultUsedInspection */
+                            /* @noinspection PhpVoidFunctionResultUsedInspection */
                             return $connection->error(Status::INTERNAL_SERVER_ERROR, $e->getMessage());
                         }
                     }

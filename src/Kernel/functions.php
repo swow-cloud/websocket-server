@@ -12,8 +12,6 @@ use Hyperf\Utils\ApplicationContext;
 if (!function_exists('format_throwable')) {
     /**
      * @param \Throwable $throwable
-     *
-     * @return string
      */
     function format_throwable(Throwable $throwable): string
     {
@@ -31,12 +29,9 @@ if (!function_exists('format_throwable')) {
 
 if (!function_exists('config')) {
     /**
-     * @param string $key
-     * @param null   $default
-     *
-     * @return mixed
+     * @param null $default
      */
-    function config(string $key, $default = null) : mixed
+    function config(string $key, $default = null): mixed
     {
         if (!ApplicationContext::hasContainer()) {
             throw new \RuntimeException('The application context lacks the container.');
