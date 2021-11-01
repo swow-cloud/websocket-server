@@ -121,7 +121,11 @@ class ServerProvider extends AbstractProvider
                                     } else {
                                         $logger->info($debug);
                                     }
-                                    file_put_contents(BASE_PATH . '/runtimes/debug/' . uniqid('debug', true) . '.html', DebugBacktraceHtml::getDump(DebugBacktraceHtml::getBacktraces()));
+                                    if (config('SHOW_DEBUG_BACKTRACE') === 'console') {
+                                        DebugBacktraceHtml::dump();
+                                    } else {
+                                        file_put_contents(BASE_PATH . '/runtimes/debug/' . uniqid('debug', true) . '.html', DebugBacktraceHtml::getDump(DebugBacktraceHtml::getBacktraces()));
+                                    }
                                 }
                             }
                             if (!$request->getKeepAlive()) {

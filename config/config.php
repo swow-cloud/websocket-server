@@ -12,6 +12,7 @@ use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
 return [
     'APP_VERSION' => env('APP_VERSION'),
     'DEBUG' => env('DEBUG', true),
+    'SHOW_DEBUG_BACKTRACE' => 'console', //or html
     StdoutLoggerInterface::class => [
         'log_level' => [
             LogLevel::ALERT,
