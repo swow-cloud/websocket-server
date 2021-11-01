@@ -178,7 +178,6 @@ class ServerProvider extends AbstractProvider
                             $dispatcher->dispatch($request, $connection);
                             $connection->upgradeToWebSocket($request);
                             $request = null;
-                            //类似于swoole的 onOpen onMessage onClose每个事件单独开启新协程,而swow是在同一个协程
                             while (true) {
                                 $frame = $connection->recvWebSocketFrame();
                                 $opcode = $frame->getOpcode();
