@@ -13,5 +13,5 @@ use Swow\Http\Server\Connection;
 
 interface MiddlewareInterface
 {
-    public function auth(RequestInterface $request, Connection $connection): void;
+    public function process(RequestInterface $request, Connection $connection): void;
 }

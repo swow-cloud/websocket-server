@@ -30,6 +30,7 @@ use SwowCloud\WebSocket\Kernel\Swow\ServerFactory;
 use SwowCloud\WebSocket\Logger\LoggerFactory;
 use SwowCloud\WebSocket\WebSocket\FdCollector;
 use SwowCloud\WebSocket\WebSocket\Handler\HandlerInterface;
+use SwowCloud\WebSocket\WebSocket\Middleware\Dispatcher as WsDispatcher;
 use SwowCloud\WebSocket\WebSocket\Middleware\MiddlewareInterface;
 use Throwable;
 use function FastRoute\simpleDispatcher;
@@ -146,7 +147,7 @@ class ServerProvider extends AbstractProvider
     protected function makeFastRoute(): void
     {
         $this->fastRouteDispatcher = simpleDispatcher(function (RouteCollector $router) {
-            $router->get('/chat', function (): Response {
+            $router->get('/chat', function () {
                 /**
                  * @var Request $request
                  */
@@ -158,44 +159,49 @@ class ServerProvider extends AbstractProvider
                     $connection = Context::get('connection');
 
                     if ($upgrade === $request::UPGRADE_WEBSOCKET) {
-                        /**
-                         * @var MiddlewareInterface[] $middlewares
-                         */
-                        $middlewares = config('websocket.middlewares');
-                        /**
-                         * @var HandlerInterface $handler
-                         */
-                        $handler = config('websocket.handler');
-                        $class = $this->container()->get($handler::class);
-                        if (!$class instanceof HandlerInterface) {
-                            throw new \InvalidArgumentException('Invalid handler');
-                        }
-                        $dispatcher = make(\SwowCloud\WebSocket\WebSocket\Middleware\Dispatcher::class, [
-                            'middlewares' => $middlewares,
-                        ]);
-                        $dispatcher->dispatch($request, $connection); //需要考虑如何停止中间件
-                        //可以在这里处理握手的问题 鉴权失败$connection->error(40x)
-                        //return $connection->error(\Swow\WebSocket\Status::INTERNAL_ERROR,'');
-                        //添加ws会话
-                        $connection->upgradeToWebSocket($request);
-                        $request = null;
-                        //类似于swoole的 onOpen onMessage onClose每个事件单独开启新协程,而swow是在同一个协程
-                        while (true) {
-                            $frame = $connection->recvWebSocketFrame();
-                            $opcode = $frame->getOpcode();
-                            switch ($opcode) {
-                                case Opcode::PING:
-                                    $connection->sendString(Frame::PONG);
-                                    break;
-                                case Opcode::BINARY:
-                                case Opcode::PONG:
-                                    break;
-                                case Opcode::CLOSE:
-                                    $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
-                                    break 2;
-                                default:
-                                    $handler->process($connection, $frame);
+                        try {
+                            /**
+                             * @var MiddlewareInterface[] $middlewares
+                             */
+                            $middlewares = config('websocket.middlewares');
+                            /**
+                             * @var HandlerInterface $handler
+                             */
+                            $handler = config('websocket.handler');
+                            $class = $this->container()->get($handler::class);
+                            if (!$class instanceof HandlerInterface) {
+                                throw new \InvalidArgumentException('Invalid handler');
                             }
+                            $dispatcher = make(WsDispatcher::class, [
+                                'middlewares' => $middlewares,
+                            ]);
+                            $dispatcher->dispatch($request, $connection);
+                            $connection->upgradeToWebSocket($request);
+                            $request = null;
+                            //类似于swoole的 onOpen onMessage onClose每个事件单独开启新协程,而swow是在同一个协程
+                            while (true) {
+                                $frame = $connection->recvWebSocketFrame();
+                                $opcode = $frame->getOpcode();
+                                switch ($opcode) {
+                                    case Opcode::PING:
+                                        $connection->sendString(Frame::PONG);
+                                        break;
+                                    case Opcode::BINARY:
+                                    case Opcode::PONG:
+                                        break;
+                                    case Opcode::CLOSE:
+                                        $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
+                                        break 2;
+                                    default:
+                                        $handler->process($connection, $frame);
+                                }
+                            }
+                        } catch (Throwable $e) {
+                            if ($e instanceof HttpException) {
+                                return $connection->error($e->getCode(), $e->getMessage());
+                            }
+
+                            return $connection->error(Status::INTERNAL_SERVER_ERROR, $e->getMessage());
                         }
                     }
                     throw new HttpException(HttpStatus::BAD_REQUEST, 'Unsupported Upgrade Type');

@@ -84,7 +84,7 @@ class Response extends SwowResponse
         $this
             ->setStatus($statusCode, $reasonPhrase)
             ->getBody()->clear()
-            ->write('<html lang="en"><body><h2>HTTP ')->write((string) $statusCode)->write(' ')->write($reasonPhrase)->write('</h2><hr><i>Powered by Serendipity-Swow</i></body></html>');
+            ->write('<html lang="en"><body><h2>HTTP ')->write((string) $statusCode)->write(' ')->write($reasonPhrase)->write('</h2><hr><i>Powered by Swow-Cloud</i></body></html>');
 
         return $this;
     }

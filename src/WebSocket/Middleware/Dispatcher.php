@@ -14,7 +14,7 @@ use Swow\Http\Server\Connection;
 class Dispatcher
 {
     /**
-     * @var MiiddlewareInterface[]
+     * @var MiddlewareInterface[]
      */
     protected array $middlewares = [];
 
@@ -25,9 +25,8 @@ class Dispatcher
 
     public function dispatch(RequestInterface $request, Connection $connection): void
     {
-        //TODO 需要考虑如何停止中间件
         foreach ($this->middlewares as $middleware) {
-            $middleware->auth($request, $connection);
+            $middleware->process($request, $connection);
         }
     }
 }
