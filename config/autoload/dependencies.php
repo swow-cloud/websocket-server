@@ -14,5 +14,5 @@ use SwowCloud\WebSocket\Kernel\Logger\StdoutLogger;
 return [
     ConfigInterface::class => ConfigFactory::class,
     StdoutLoggerInterface::class => StdoutLogger::class,
-    \Redis::class => \SwowCloud\WebSocket\Redis\Redis::class,
+    Redis::class => SwowCloud\WebSocket\Redis\Redis::class,
 ];

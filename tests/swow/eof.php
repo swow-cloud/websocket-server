@@ -22,7 +22,7 @@ while (true) {
                 echo "Stream<fd={$stream->getFd()}>: \"{$packet}\"" . PHP_EOL;
                 $stream->write([$packet, $stream->getEof()]);
             }
-        } catch (\Swow\Socket\Exception $exception) {
+        } catch (Swow\Socket\Exception $exception) {
             echo "Stream<fd={$stream->getFd()}> goaway, reason: {$exception->getMessage()}" . PHP_EOL;
         }
     }, $server->accept());

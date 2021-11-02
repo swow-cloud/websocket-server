@@ -9,11 +9,14 @@ EOF;
 
 return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
+    ->registerCustomFixers(new PhpCsFixerCustomFixers\Fixers())
     ->setRules([
         '@PSR12' => true,
         '@Symfony' => true,
         '@DoctrineAnnotation' => true,
         '@PhpCsFixer' => true,
+         PhpCsFixerCustomFixers\Fixer\NoLeadingSlashInGlobalNamespaceFixer::name() => true,
+         PhpCsFixerCustomFixers\Fixer\PhpdocNoSuperfluousParamFixer::name() => true,
         'header_comment' => [
             'comment_type' => 'PHPDoc',
             'header' => $header,

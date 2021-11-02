@@ -34,11 +34,11 @@ if (!function_exists('config')) {
     function config(string $key, $default = null): mixed
     {
         if (!ApplicationContext::hasContainer()) {
-            throw new \RuntimeException('The application context lacks the container.');
+            throw new RuntimeException('The application context lacks the container.');
         }
         $container = ApplicationContext::getContainer();
         if (!$container->has(ConfigInterface::class)) {
-            throw new \RuntimeException('ConfigInterface is missing in container.');
+            throw new RuntimeException('ConfigInterface is missing in container.');
         }
 
         return $container->get(ConfigInterface::class)->get($key, $default);
