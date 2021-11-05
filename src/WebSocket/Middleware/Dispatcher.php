@@ -26,6 +26,7 @@ class Dispatcher
     public function dispatch(RequestInterface $request, Connection $connection): void
     {
         foreach ($this->middlewares as $middleware) {
+            $middleware = make($middleware);
             $middleware->process($request, $connection);
         }
     }

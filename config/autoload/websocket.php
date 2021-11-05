@@ -6,13 +6,12 @@
 
 declare(strict_types=1);
 
-use SwowCloud\WebSocket\WebSocket\Handler\HandlerInterface;
-use SwowCloud\WebSocket\WebSocket\Middleware\MiddlewareInterface;
+use SwowCloud\WebSocket\Middleware\WsHandShakeMiddleware;
+use SwowCloud\WebSocket\WebSocket\Handler\WsHandler;
 
 return [
-    'handler' => HandlerInterface::class,
+    'handler' => WsHandler::class,
     'middlewares' => [
-        MiddlewareInterface::class,
+        WsHandShakeMiddleware::class,
     ],
-    '',
 ];

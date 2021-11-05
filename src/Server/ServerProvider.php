@@ -85,8 +85,9 @@ class ServerProvider extends AbstractProvider
                                 $response = $this->dispatcher($request, $connection);
                                 if ($response instanceof Response) {
                                     $connection->sendHttpResponse($response);
+                                } else {
+                                    $response = new Response();
                                 }
-                                continue;
                             } catch (Throwable $exception) {
                                 if ($exception instanceof HttpException) {
                                     $connection->error($exception->getCode(), $exception->getMessage());
@@ -109,9 +110,7 @@ class ServerProvider extends AbstractProvider
                                         $debug .= 'DATA: ' . $customData . PHP_EOL;
                                     }
                                     $debug .= 'REQUEST: ' . $request->getRequestString() . PHP_EOL;
-                                    if (isset($response)) {
-                                        $debug .= 'RESPONSE: ' . $request->getResponseString($response) . PHP_EOL;
-                                    }
+                                    $debug .= 'RESPONSE: ' . $request->getResponseString($response) . PHP_EOL;
                                     if (isset($exception) && $exception instanceof Throwable) {
                                         $debug .= 'EXCEPTION: ' . $exception->getMessage() . PHP_EOL;
                                     }
@@ -122,7 +121,9 @@ class ServerProvider extends AbstractProvider
                                         $logger->info($debug);
                                     }
                                     if (config('SHOW_DEBUG_BACKTRACE') === 'console') {
-                                        DebugBacktraceHtml::dump();
+                                        /*
+                                         * DebugBacktraceHtml::dump();
+                                         */
                                     } else {
                                         file_put_contents(BASE_PATH . '/runtimes/debug/' . uniqid('debug', true) . '.html', DebugBacktraceHtml::getDump(DebugBacktraceHtml::getBacktraces()));
                                     }
@@ -175,7 +176,7 @@ class ServerProvider extends AbstractProvider
                              * @var HandlerInterface $handler
                              */
                             $handler = config('websocket.handler');
-                            $class = $this->container()->get($handler::class);
+                            $class = $this->container()->get($handler);
                             if (!$class instanceof HandlerInterface) {
                                 throw new InvalidArgumentException('Invalid handler');
                             }
@@ -185,6 +186,7 @@ class ServerProvider extends AbstractProvider
                             $dispatcher->dispatch($request, $connection);
                             $connection->upgradeToWebSocket($request);
                             $request = null;
+                            FdCollector::add($connection);
                             while (true) {
                                 $frame = $connection->recvWebSocketFrame();
                                 $opcode = $frame->getOpcode();
@@ -196,10 +198,11 @@ class ServerProvider extends AbstractProvider
                                     case Opcode::PONG:
                                         break;
                                     case Opcode::CLOSE:
+                                        FdCollector::del($connection->getFd());
                                         $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
                                         break 2;
                                     default:
-                                        $handler->process($connection, $frame);
+                                        $class->process($connection, $frame);
                                 }
                             }
                         } catch (Throwable $e) {
@@ -232,11 +235,9 @@ class ServerProvider extends AbstractProvider
             SwowCoroutine::defer(function () use ($connection) {
                 Context::destroy(RequestInterface::class);
                 Context::destroy('connection');
-                FdCollector::del($connection->getFd());
             });
             Context::set('connection', $connection);
             Context::set(RequestInterface::class, $request);
-            FdCollector::add($connection);
             $uri = $request->getPath();
             $method = $request->getMethod();
             if (false !== $pos = strpos($uri, '?')) {

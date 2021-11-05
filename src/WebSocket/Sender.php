@@ -11,8 +11,8 @@ namespace SwowCloud\WebSocket\WebSocket;
 use Psr\Container\ContainerInterface;
 use Swow\Http\Exception;
 use Swow\Http\Status;
-use Swow\Http\WebSocketFrame;
 use Swow\Socket\Exception as SocketException;
+use Swow\WebSocket\Frame as WebSocketFrame;
 use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
 use SwowCloud\WebSocket\WebSocket\Exception\BadRequestException;
 
