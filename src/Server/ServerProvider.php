@@ -172,9 +172,6 @@ class ServerProvider extends AbstractProvider
                              * @var MiddlewareInterface[] $middlewares
                              */
                             $middlewares = config('websocket.middlewares');
-                            /**
-                             * @var HandlerInterface $handler
-                             */
                             $handler = config('websocket.handler');
                             $class = $this->container()->get($handler);
                             if (!$class instanceof HandlerInterface) {
@@ -232,7 +229,7 @@ class ServerProvider extends AbstractProvider
     {
         $channel = new Channel();
         SwowCoroutine::create(function () use ($request, $channel, $connection) {
-            SwowCoroutine::defer(function () use ($connection) {
+            SwowCoroutine::defer(function () {
                 Context::destroy(RequestInterface::class);
                 Context::destroy('connection');
             });
