@@ -7,10 +7,10 @@
 declare(strict_types=1);
 
 use SwowCloud\WebSocket\Middleware\WsHandShakeMiddleware;
-use SwowCloud\WebSocket\WebSocket\Handler\WsHandler;
+use SwowCloud\WebSocket\WebSocket\Handler\AbstractWsHandler;
 
 return [
-    'handler' => WsHandler::class,
+    'handler' => AbstractWsHandler::class,
     'middlewares' => [
         WsHandShakeMiddleware::class,
     ],

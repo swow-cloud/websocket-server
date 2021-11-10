@@ -10,15 +10,9 @@ namespace SwowCloud\WebSocket\WebSocket\Handler;
 
 use Swow\Http\Server\Connection;
 use Swow\WebSocket\Frame;
-use SwowCloud\WebSocket\WebSocket\Sender;
 
-class WsHandler implements HandlerInterface
+class ExampleHandler extends AbstractWsHandler
 {
-    public function __construct(Sender $sender)
-    {
-        $this->sender = $sender;
-    }
-
     public function process(Connection $connection, Frame $frame): void
     {
         $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
