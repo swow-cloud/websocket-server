@@ -15,7 +15,14 @@ class ExampleHandler extends AbstractWsHandler
 {
     public function process(Connection $connection, Frame $frame): void
     {
-        $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
-        $this->sender->push($connection->getFd(), $frame);
+        try {
+            $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
+            $this->sender->push($connection->getFd(), $frame);
+            //broadcast message
+            $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
+            $this->sender->broadcastMessage($frame);
+        } catch (\Throwable $throwable) {
+            $this->logger->error(format_throwable($throwable));
+        }
     }
 }
