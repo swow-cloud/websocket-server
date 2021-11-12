@@ -195,8 +195,9 @@ class ServerProvider extends AbstractProvider
                                     case Opcode::PONG:
                                         break;
                                     case Opcode::CLOSE:
-                                        FdCollector::del($connection->getFd());
-                                        $this->stdoutLogger->debug("[WebSocket] Client closed session #{$connection->getFd()}");
+                                        $fd = $connection->getFd();
+                                        FdCollector::del($fd);
+                                        $this->stdoutLogger->debug("[WebSocket] Client closed session #{$fd}");
                                         break 2;
                                     default:
                                         $class->process($connection, $frame);
