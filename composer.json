@@ -39,6 +39,7 @@
     "monolog/monolog": "^2.3",
     "nette/utils": "^3.2",
     "nikic/fast-route": "^1.3",
+    "serendipity-swow/sockets": "^0.8.0",
     "swow/swow": "dev-develop",
     "symfony/config": "^5.3",
     "symfony/console": "^5.3",

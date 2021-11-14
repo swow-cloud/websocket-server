@@ -16,5 +16,7 @@ class WsHandShakeMiddleware implements MiddlewareInterface
 {
     public function process(RequestInterface $request, Connection $connection): void
     {
+        //throw new Exception
+      // throw new \Exception('failed to process request');
     }
 }
