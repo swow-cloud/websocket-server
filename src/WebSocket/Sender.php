@@ -64,6 +64,7 @@ class Sender
             }
             $connection->close();
             FdCollector::del($fd);
+            $this->logger->debug("[WebSocket] closed to #{$fd}");
         } catch (SocketException $e) {
             $this->logger->error(sprintf('[WebSocket] closed to #%s failed: %s', $fd, $e->getMessage()));
         }

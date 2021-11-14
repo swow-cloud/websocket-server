@@ -16,6 +16,7 @@ class ExampleHandler extends AbstractWsHandler
     public function process(Connection $connection, Frame $frame): void
     {
         try {
+            //单点推送
             $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
             $this->sender->push($connection->getFd(), $frame);
             //broadcast message
