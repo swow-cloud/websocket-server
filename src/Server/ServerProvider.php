@@ -204,6 +204,7 @@ class ServerProvider extends AbstractProvider
                                 }
                             }
                         } catch (Throwable $e) {
+                            $this->logger->error(format_throwable($e));
                             if ($e instanceof HttpException) {
                                 /* @noinspection PhpVoidFunctionResultUsedInspection */
                                 return $connection->error($e->getCode(), $e->getMessage());
