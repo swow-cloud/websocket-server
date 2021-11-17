@@ -22,6 +22,8 @@ class RateLimitMiddleware implements MiddlewareInterface
     {
         $this->factory = $factory;
         $this->key = 'swow-cloud:redis-rateLimiter';
+        //可配置
+        $this->operations = 60;
     }
 
     public function process(RequestInterface $request, Connection $connection): void
