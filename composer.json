@@ -50,7 +50,8 @@
     "symfony/yaml": "^5.3",
     "vlucas/phpdotenv": "^5.3",
     "web-token/jwt-encryption": "^2.2",
-    "web-token/jwt-signature": "^2.2"
+    "web-token/jwt-signature": "^2.2",
+    "web-token/jwt-signature-algorithm-hmac": "^2.2"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.0",
