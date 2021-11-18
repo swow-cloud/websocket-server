@@ -14,6 +14,7 @@ use Jose\Component\Core\AlgorithmManager;
 use Jose\Component\Core\JWK;
 use Jose\Component\Signature\JWS as JoseJWS;
 use Jose\Component\Signature\JWSBuilder;
+use Jose\Component\Signature\JWSVerifier;
 use Jose\Component\Signature\Serializer\JWSSerializer;
 use Psr\Container\ContainerInterface;
 
@@ -28,6 +29,8 @@ class Jws
     protected JWSBuilder $jwsBuilder;
 
     protected JWSSerializer $serializer;
+
+    protected JWSVerifier $verifier;
 
     public function __construct(ContainerInterface $container)
     {
@@ -46,10 +49,20 @@ class Jws
             'signatureAlgorithmManager' => $this->algorithmManager,
         ]);
         $this->serializer = make($this->config->get('jws.serializer'));
+        $this->verifier = make(JWSVerifier::class, [
+            'signatureAlgorithmManager' => $this->algorithmManager,
+        ]);
     }
 
     public function create(array $payload): JoseJWS
     {
+        /*
+         * ['iat' => time(),
+         * 'nbf' => time(),
+         * 'exp' => time() + 3600,
+         * 'iss' => 'My service',
+         * 'aud' => 'Your application'],
+         */
         return $this->jwsBuilder->create()->withPayload(Json::encode($payload))->addSignature($this->jwk, [
             'alg' => 'HS256',
         ])->build();
@@ -58,5 +71,17 @@ class Jws
     public function serialize(JoseJWS $JWS): string
     {
         return $this->serializer->serialize($JWS);
+    }
+
+    public function unserialize(string $token): JoseJWS
+    {
+        return $this->serializer->unserialize($token);
+    }
+
+    public function verify(string $token): bool
+    {
+        $jws = $this->unserialize($token);
+
+        return $this->verifier->verifyWithKey($jws, $this->jwk, 0);
     }
 }
