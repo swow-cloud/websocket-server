@@ -40,12 +40,12 @@ class Jws
         $this->container = $container;
         $this->config = $this->container->get(ConfigInterface::class);
         $this->algorithmManager = make(AlgorithmManager::class, [
-            'algorithms' => make($this->config->get('jws.signature_algorithms')),
+            'algorithms' => [make($this->config->get('jws.signature_algorithms'))],
         ]);
         $this->jwk = make(JWK::class, [
             'values' => [
                 'kty' => $this->config->get('jws.kty'),
-                'key' => $this->config->get('jws.key'),
+                'k' => $this->config->get('jws.key'),
             ],
         ]);
         $this->jwsBuilder = make(JWSBuilder::class, [

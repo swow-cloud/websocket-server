@@ -29,6 +29,7 @@ use SwowCloud\WebSocket\Kernel\Http\Response;
 use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
 use SwowCloud\WebSocket\Kernel\Router\RouteCollector;
 use SwowCloud\WebSocket\Kernel\Swow\ServerFactory;
+use SwowCloud\WebSocket\Kernel\Token\Jws;
 use SwowCloud\WebSocket\Logger\LoggerFactory;
 use SwowCloud\WebSocket\WebSocket\FdCollector;
 use SwowCloud\WebSocket\WebSocket\Handler\HandlerInterface;
@@ -216,7 +217,23 @@ class ServerProvider extends AbstractProvider
                     }
                     throw new HttpException(HttpStatus::BAD_REQUEST, 'Unsupported Upgrade Type');
                 } else {
+                    /**
+                     * $jws = make(Jws::class,[
+                     * $this->container()
+                     * ]);
+                     *
+                     * $coreJws = $jws->create([
+                     * 'iat' => time(),
+                     * 'nbf' => time(),
+                     * 'exp' => time() + 3600,
+                     * 'iss' => 'My service',
+                     * 'aud' => 'Your application',
+                     * ]);
+                     * $joseJws = $jws->unserialize('eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcyMTY3OTQsIm5iZiI6MTYzNzIxNjc5NCwiZXhwIjoxNjM3MjIwMzk0LCJpc3MiOiJNeSBzZXJ2aWNlIiwiYXVkIjoiWW91ciBhcHBsaWNhdGlvbiJ9.m0yj0AtOQVske15RJjIBJ4Zdhwj4TN006coKLARBGKQ');
+                     * dd($joseJws->getPayload());
+                     */
                     $response = new Response();
+
                     $response->text(file_get_contents(BASE_PATH . '/public/chat.html'));
 
                     return $response;
