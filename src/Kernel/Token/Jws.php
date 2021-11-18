@@ -18,6 +18,9 @@ use Jose\Component\Signature\JWSVerifier;
 use Jose\Component\Signature\Serializer\JWSSerializer;
 use Psr\Container\ContainerInterface;
 
+/**
+ * 验证签名
+ */
 class Jws
 {
     protected ConfigInterface $config;
