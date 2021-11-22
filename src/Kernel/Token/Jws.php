@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace SwowCloud\WebSocket\Kernel\Token;
 
-use Hyperf\Contract\ConfigInterface;
 use Hyperf\Utils\Codec\Json;
 use Jose\Component\Core\AlgorithmManager;
 use Jose\Component\Core\JWK;
@@ -23,8 +22,6 @@ use Psr\Container\ContainerInterface;
  */
 class Jws
 {
-    protected ConfigInterface $config;
-
     protected AlgorithmManager $algorithmManager;
 
     protected JWK $jwk;
@@ -38,20 +35,19 @@ class Jws
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->config = $this->container->get(ConfigInterface::class);
         $this->algorithmManager = make(AlgorithmManager::class, [
-            'algorithms' => [make($this->config->get('jws.signature_algorithms'))],
+            'algorithms' => [make(config('jws.signature_algorithms'))],
         ]);
         $this->jwk = make(JWK::class, [
             'values' => [
-                'kty' => $this->config->get('jws.kty'),
-                'k' => $this->config->get('jws.key'),
+                'kty' => config('jws.kty'),
+                'k' => config('jws.key'),
             ],
         ]);
         $this->jwsBuilder = make(JWSBuilder::class, [
             'signatureAlgorithmManager' => $this->algorithmManager,
         ]);
-        $this->serializer = make($this->config->get('jws.serializer'));
+        $this->serializer = make(config('jws.serializer'));
         $this->verifier = make(JWSVerifier::class, [
             'signatureAlgorithmManager' => $this->algorithmManager,
         ]);
