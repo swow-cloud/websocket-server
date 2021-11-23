@@ -22,7 +22,6 @@ class RateLimitMiddleware implements MiddlewareInterface
     {
         $this->factory = $factory;
         $this->key = 'swow-cloud:redis-rateLimiter';
-        //可配置
         $this->operations = config('rate_limit.operations');
         $this->interval = config('rate_limit.interval');
     }
@@ -36,9 +35,9 @@ class RateLimitMiddleware implements MiddlewareInterface
         $rateLimiter = new RedisRateLimiter(Rate::custom($this->operations, $this->interval), $redis);
         try {
             $rateLimiter->limit($this->key);
-            //on success
+            //on success TODO
         } catch (LimitExceeded $exceeded) {
-            //on limit exceeded
+            //on limit exceeded TODO
         }
     }
 }
