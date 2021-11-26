@@ -25,3 +25,4 @@ Homestead.json
 composer.lock
 runtimes
 rate-limit
+redis
