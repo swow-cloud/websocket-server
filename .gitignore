@@ -28,3 +28,4 @@ rate-limit
 redis
 contract
 websocket
+redis-subscriber

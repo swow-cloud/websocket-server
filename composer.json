@@ -18,7 +18,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "SwowCloud\\WebSocketTest\\": "tests"
+      "SwowCloud\\WsServer\\": "tests"
     }
   },
   "require": {
@@ -35,6 +35,7 @@
     "hyperf/pool": "2.2.*",
     "hyperf/utils": "2.2.*",
     "marwanalsoltany/blend": "^1.0",
+    "mix/redis-subscriber": "^3.0",
     "monolog/monolog": "^2.3",
     "nette/utils": "^3.2",
     "nikic/fast-route": "^1.3",

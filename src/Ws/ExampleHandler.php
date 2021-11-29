@@ -18,6 +18,7 @@ use SwowCloud\WebSocket\Sender;
 class ExampleHandler extends AbstractWsHandler
 {
     protected FdGetter $getter;
+
     public function __construct(Sender $sender, ContainerInterface $container)
     {
         parent::__construct($sender, $container);
@@ -31,7 +32,7 @@ class ExampleHandler extends AbstractWsHandler
             $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
             $this->sender->push($connection->getFd(), $frame);
             //broadcast message
-            $frame->getPayloadData()->rewind()->write(sprintf("Session:[%s] broadcast message {$frame->getPayloadData()}",$this->getter->get($connection)));
+            $frame->getPayloadData()->rewind()->write(sprintf("Session:[%s] broadcast message {$frame->getPayloadData()}", $this->getter->get($connection)));
             $this->sender->broadcastMessage($frame);
         } catch (\Throwable $throwable) {
             $this->logger->error(format_throwable($throwable));
