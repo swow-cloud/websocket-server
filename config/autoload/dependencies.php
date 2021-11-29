@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 use Hyperf\Contract\ConfigInterface;
 use SwowCloud\Contract\StdoutLoggerInterface;
-use SwowCloud\WebSocket\Config\ConfigFactory;
-use SwowCloud\WebSocket\Kernel\Logger\StdoutLogger;
+use SwowCloud\WsServer\Config\ConfigFactory;
+use SwowCloud\WsServer\Kernel\Logger\StdoutLogger;
 
 return [
     ConfigInterface::class => ConfigFactory::class,

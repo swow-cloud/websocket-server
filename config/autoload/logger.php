@@ -7,7 +7,7 @@
 declare(strict_types=1);
 
 use Monolog\Formatter\JsonFormatter;
-use SwowCloud\WebSocket\Kernel\Logger\AppendRequestIdProcessor;
+use SwowCloud\WsServer\Kernel\Logger\AppendRequestIdProcessor;
 
 return [
     'default' => [

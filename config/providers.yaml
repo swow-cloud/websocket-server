@@ -1,6 +1,6 @@
 Music-Server:
   BootApp:
-    - SwowCloud\WebSocket\Config\ConfigProvider
-    - SwowCloud\WebSocket\Event\EventProvider
-    - SwowCloud\WebSocket\Logger\LoggerProvider
-    - SwowCloud\WebSocket\Server\ServerProvider
+    - SwowCloud\WsServer\Config\ConfigProvider
+    - SwowCloud\WsServer\Event\EventProvider
+    - SwowCloud\WsServer\Logger\LoggerProvider
+    - SwowCloud\WsServer\Server\ServerProvider
