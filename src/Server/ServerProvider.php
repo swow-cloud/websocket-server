@@ -123,8 +123,8 @@ class ServerProvider extends AbstractProvider
                                     }
                                     if (config('SHOW_DEBUG_BACKTRACE') === 'console') {
                                         /*
-                                         * DebugBacktraceHtml::dump();
-                                         */
+                                        *\DebugBacktraceConsole::dump();
+                                        */
                                     } else {
                                         file_put_contents(BASE_PATH . '/runtimes/debug/' . uniqid('debug', true) . '.html', DebugBacktraceHtml::getDump(DebugBacktraceHtml::getBacktraces()));
                                     }

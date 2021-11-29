@@ -1,4 +1,4 @@
-Music-Server:
+WebSocket-Server:
   BootApp:
     - SwowCloud\WsServer\Config\ConfigProvider
     - SwowCloud\WsServer\Event\EventProvider

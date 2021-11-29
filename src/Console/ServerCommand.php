@@ -19,11 +19,11 @@ final class ServerCommand extends Command
 {
     protected static $defaultName = 'server:start';
 
-    protected const COMMAND_PROVIDER_NAME = 'Music-Server';
+    protected const COMMAND_PROVIDER_NAME = 'WebSocket-Server';
 
     protected function configure(): void
     {
-        $this->setDescription('Start MusicServer')
+        $this->setDescription('Start WebSocket Server')
             ->setHelp('This command allows you start MusicServer...');
     }
 
