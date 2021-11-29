@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Event;
+namespace SwowCloud\WsServer\Event;
 
 class EventDispatcher extends \Symfony\Component\EventDispatcher\EventDispatcher
 {

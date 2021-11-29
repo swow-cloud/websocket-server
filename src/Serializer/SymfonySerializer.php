@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Serializer;
+namespace SwowCloud\WsServer\Serializer;
 
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 

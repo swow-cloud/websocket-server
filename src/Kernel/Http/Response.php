@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Http;
+namespace SwowCloud\WsServer\Kernel\Http;
 
 use Hyperf\Utils\Codec\Json;
 use RuntimeException;

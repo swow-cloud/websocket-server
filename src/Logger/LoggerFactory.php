@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Logger;
+namespace SwowCloud\WsServer\Logger;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Utils\Arr;
@@ -19,7 +19,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger as MonologLogger;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use SwowCloud\WebSocket\Logger\Exception\InvalidConfigException;
+use SwowCloud\WsServer\Logger\Exception\InvalidConfigException;
 
 class LoggerFactory
 {

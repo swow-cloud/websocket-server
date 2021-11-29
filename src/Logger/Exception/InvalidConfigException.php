@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Logger\Exception;
+namespace SwowCloud\WsServer\Logger\Exception;
 
 class InvalidConfigException extends \RuntimeException
 {

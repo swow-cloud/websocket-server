@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Swow;
+namespace SwowCloud\WsServer\Kernel\Swow;
 
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Swow\Socket;
-use SwowCloud\WebSocket\Contract\ServerInterface;
-use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
+use SwowCloud\Contract\ServerInterface;
+use SwowCloud\Contract\StdoutLoggerInterface;
 
 class Server implements ServerInterface
 {

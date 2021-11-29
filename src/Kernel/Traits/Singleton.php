@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Traits;
+namespace SwowCloud\WsServer\Kernel\Traits;
 
 trait Singleton
 {

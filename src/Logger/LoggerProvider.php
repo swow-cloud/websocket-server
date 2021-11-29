@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Logger;
+namespace SwowCloud\WsServer\Logger;
 
-use SwowCloud\WebSocket\Kernel\Logger\StdoutLogger;
-use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
+use SwowCloud\WsServer\Kernel\Logger\StdoutLogger;
+use SwowCloud\WsServer\Kernel\Provider\AbstractProvider;
 
 class LoggerProvider extends AbstractProvider
 {

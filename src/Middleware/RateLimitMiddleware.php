@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Middleware;
+namespace SwowCloud\WsServer\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Swow\Http\Exception as HttpException;
@@ -15,8 +15,8 @@ use Swow\Http\Status;
 use SwowCloud\RateLimit\Exception\LimitExceeded;
 use SwowCloud\RateLimit\Rate;
 use SwowCloud\RateLimit\RedisRateLimiter;
-use SwowCloud\WebSocket\Redis\RedisFactory;
-use SwowCloud\WebSocket\WebSocket\Middleware\MiddlewareInterface;
+use SwowCloud\Redis\RedisFactory;
+use SwowCloud\WebSocket\Middleware\MiddlewareInterface;
 
 class RateLimitMiddleware implements MiddlewareInterface
 {

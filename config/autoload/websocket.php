@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
+use SwowCloud\WebSocket\Handler\ExampleHandler;
 use SwowCloud\WebSocket\Middleware\RateLimitMiddleware;
 use SwowCloud\WebSocket\Middleware\WsHandShakeMiddleware;
-use SwowCloud\WebSocket\WebSocket\Handler\ExampleHandler;
 
 return [
     'handler' => ExampleHandler::class,

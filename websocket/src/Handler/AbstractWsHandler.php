@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\WebSocket\Handler;
+namespace SwowCloud\WebSocket\Handler;
 
 use Psr\Container\ContainerInterface;
-use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
-use SwowCloud\WebSocket\WebSocket\Sender;
+use SwowCloud\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Sender;
 
 abstract class AbstractWsHandler implements HandlerInterface
 {

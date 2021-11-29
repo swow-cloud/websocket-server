@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\WebSocket;
+namespace SwowCloud\WebSocket;
 
 use Swow\Http\Server\Connection;
-use SwowCloud\WebSocket\WebSocket\Exception\BadRequestException;
+use SwowCloud\WebSocket\Exception\BadRequestException;
 
 class FdCollector
 {

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Logger;
+namespace SwowCloud\WsServer\Kernel\Logger;
 
 use Hyperf\Utils\Context;
 use Monolog\Processor\MemoryProcessor;

@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Db;
+namespace SwowCloud\WsServer\Db;
 
-use SwowCloud\WebSocket\Db\Exception\RuntimeException;
+use SwowCloud\WsServer\Db\Exception\RuntimeException;
 
 class Command
 {

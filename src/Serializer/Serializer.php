@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Serializer;
+namespace SwowCloud\WsServer\Serializer;
 
-use SwowCloud\WebSocket\Contract\SerializerInterface;
+use SwowCloud\Contract\SerializerInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;

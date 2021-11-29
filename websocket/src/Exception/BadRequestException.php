@@ -6,8 +6,8 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Redis\Exception;
+namespace SwowCloud\WebSocket\Exception;
 
-class InvalidRedisProxyException extends \RuntimeException
+class BadRequestException extends \RuntimeException
 {
 }

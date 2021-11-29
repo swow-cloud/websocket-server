@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\WebSocket\Middleware;
+namespace SwowCloud\WebSocket\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Swow\Http\Server\Connection;

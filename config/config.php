@@ -7,7 +7,7 @@
 declare(strict_types=1);
 
 use Psr\Log\LogLevel;
-use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
+use SwowCloud\Contract\StdoutLoggerInterface;
 
 return [
     'APP_VERSION' => env('APP_VERSION'),

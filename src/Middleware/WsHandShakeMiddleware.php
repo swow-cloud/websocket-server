@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Middleware;
+namespace SwowCloud\WsServer\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Swow\Http\Server\Connection;
-use SwowCloud\WebSocket\WebSocket\Middleware\MiddlewareInterface;
+use SwowCloud\WebSocket\Middleware\MiddlewareInterface;
 
 class WsHandShakeMiddleware implements MiddlewareInterface
 {

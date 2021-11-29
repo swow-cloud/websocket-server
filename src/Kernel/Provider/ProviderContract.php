@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Provider;
+namespace SwowCloud\WsServer\Kernel\Provider;
 
 interface ProviderContract
 {

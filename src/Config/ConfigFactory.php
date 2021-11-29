@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Config;
+namespace SwowCloud\WsServer\Config;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Finder\Finder;

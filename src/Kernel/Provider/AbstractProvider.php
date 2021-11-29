@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Provider;
+namespace SwowCloud\WsServer\Kernel\Provider;
 
 use Hyperf\Di\Container;
 use Hyperf\Utils\ApplicationContext;
 use JetBrains\PhpStorm\Pure;
 use Psr\Container\ContainerInterface;
-use SwowCloud\WebSocket\Config\ProviderConfig;
+use SwowCloud\WsServer\Config\ProviderConfig;
 
 abstract class AbstractProvider implements ProviderContract
 {

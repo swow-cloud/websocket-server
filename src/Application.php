@@ -6,14 +6,14 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket;
+namespace SwowCloud\WsServer;
 
 use Dotenv\Dotenv;
 use Hyperf\Di\Container;
 use Psr\Container\ContainerInterface;
 use Swow\Debug\Debugger;
-use SwowCloud\WebSocket\Config\Loader\YamlLoader;
-use SwowCloud\WebSocket\Console\ServerCommand;
+use SwowCloud\WsServer\Config\Loader\YamlLoader;
+use SwowCloud\WsServer\Console\ServerCommand;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\Console\Application as SymfonyApplication;

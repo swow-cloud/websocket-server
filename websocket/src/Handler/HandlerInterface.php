@@ -6,14 +6,12 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\WebSocket;
+namespace SwowCloud\WebSocket\Handler;
 
 use Swow\Http\Server\Connection;
+use Swow\WebSocket\Frame;
 
-class FdGetter
+interface HandlerInterface
 {
-    public function get(Connection $connection): int
-    {
-        return $connection->getFd();
-    }
+    public function process(Connection $connection, Frame $frame): void;
 }

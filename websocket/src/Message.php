@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\WebSocket;
+namespace SwowCloud\WebSocket;
 
 use Hyperf\Utils\Codec\Json;
 

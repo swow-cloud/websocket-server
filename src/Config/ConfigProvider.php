@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Config;
+namespace SwowCloud\WsServer\Config;
 
 use Hyperf\Contract\ConfigInterface;
-use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
+use SwowCloud\WsServer\Kernel\Provider\AbstractProvider;
 
 class ConfigProvider extends AbstractProvider
 {

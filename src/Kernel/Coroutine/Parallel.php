@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Coroutine;
+namespace SwowCloud\WsServer\Kernel\Coroutine;
 
 use Hyperf\Utils\Coroutine as SwowCo;
 use Swow\Channel;

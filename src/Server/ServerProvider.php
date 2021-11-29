@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Server;
+namespace SwowCloud\WsServer\Server;
 
 use Carbon\Carbon;
 use DebugBacktraceHtml;
@@ -22,19 +22,19 @@ use Swow\Http\Server\Request as SwowRequest;
 use Swow\Http\Status;
 use Swow\WebSocket\Frame;
 use Swow\WebSocket\Opcode;
-use SwowCloud\WebSocket\Contract\LoggerInterface;
-use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
-use SwowCloud\WebSocket\Kernel\Http\Request;
-use SwowCloud\WebSocket\Kernel\Http\Response;
-use SwowCloud\WebSocket\Kernel\Provider\AbstractProvider;
-use SwowCloud\WebSocket\Kernel\Router\RouteCollector;
-use SwowCloud\WebSocket\Kernel\Swow\ServerFactory;
-use SwowCloud\WebSocket\Kernel\Token\Jws;
-use SwowCloud\WebSocket\Logger\LoggerFactory;
-use SwowCloud\WebSocket\WebSocket\FdCollector;
-use SwowCloud\WebSocket\WebSocket\Handler\HandlerInterface;
-use SwowCloud\WebSocket\WebSocket\Middleware\Dispatcher as WsDispatcher;
-use SwowCloud\WebSocket\WebSocket\Middleware\MiddlewareInterface;
+use SwowCloud\Contract\LoggerInterface;
+use SwowCloud\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\FdCollector;
+use SwowCloud\WebSocket\Handler\HandlerInterface;
+use SwowCloud\WebSocket\Middleware\Dispatcher as WsDispatcher;
+use SwowCloud\WebSocket\Middleware\MiddlewareInterface;
+use SwowCloud\WsServer\Kernel\Http\Request;
+use SwowCloud\WsServer\Kernel\Http\Response;
+use SwowCloud\WsServer\Kernel\Provider\AbstractProvider;
+use SwowCloud\WsServer\Kernel\Router\RouteCollector;
+use SwowCloud\WsServer\Kernel\Swow\ServerFactory;
+use SwowCloud\WsServer\Kernel\Token\Jws;
+use SwowCloud\WsServer\Logger\LoggerFactory;
 use Throwable;
 use function FastRoute\simpleDispatcher;
 use const Swow\Errno\EMFILE;

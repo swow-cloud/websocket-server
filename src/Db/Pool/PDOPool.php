@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Db\Pool;
+namespace SwowCloud\WsServer\Db\Pool;
 
 use Hyperf\Contract\ConnectionInterface;
-use SwowCloud\WebSocket\Db\PDOConnection;
+use SwowCloud\WsServer\Db\PDOConnection;
 
 class PDOPool extends Pool
 {

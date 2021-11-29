@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Token;
+namespace SwowCloud\WsServer\Kernel\Token;
 
 use Hyperf\Utils\Codec\Json;
 use Jose\Component\Core\AlgorithmManager;

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Config;
+namespace SwowCloud\WsServer\Config;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Utils\Arr;

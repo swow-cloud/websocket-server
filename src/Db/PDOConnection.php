@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Db;
+namespace SwowCloud\WsServer\Db;
 
 use Closure;
 use Hyperf\Pool\Exception\ConnectionException;

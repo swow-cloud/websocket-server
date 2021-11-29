@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Db;
+namespace SwowCloud\WsServer\Db;
 
 use Closure;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Utils\Context;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwowCloud\WebSocket\Db\Pool\PoolFactory;
+use SwowCloud\WsServer\Db\Pool\PoolFactory;
 use Throwable;
 
 /**
@@ -130,7 +130,7 @@ class DB
             $static = $ref->getStaticVariables();
             if (array_key_exists('command', $static)) {
                 /**
-                 * @var \SwowCloud\WebSocket\Db\Command $command
+                 * @var \SwowCloud\WsServer\Db\Command $command
                  */
                 $command = $static['command'];
                 $query = $command->getSql();

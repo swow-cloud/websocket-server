@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Logger;
+namespace SwowCloud\WsServer\Logger;
 
 use Monolog\Logger as MonoLogger;
-use SwowCloud\WebSocket\Contract\LoggerInterface;
+use SwowCloud\Contract\LoggerInterface;
 
 class Logger extends MonoLogger implements LoggerInterface
 {

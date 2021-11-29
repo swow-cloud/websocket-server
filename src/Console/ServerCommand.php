@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Console;
+namespace SwowCloud\WsServer\Console;
 
 use Hyperf\Utils\Coroutine as SwowCoroutine;
-use SwowCloud\WebSocket\Kernel\Provider\KernelProvider;
+use SwowCloud\WsServer\Kernel\Provider\KernelProvider;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 /**

@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Config;
+namespace SwowCloud\WsServer\Config;
 
 use Hyperf\Utils\ApplicationContext;
-use SwowCloud\WebSocket\Config\Loader\YamlLoader;
+use SwowCloud\WsServer\Config\Loader\YamlLoader;
 use function class_exists;
 use function is_string;
 use function method_exists;

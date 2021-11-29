@@ -6,22 +6,22 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\WebSocket;
+namespace SwowCloud\WebSocket;
 
 use Psr\Container\ContainerInterface;
 use Swow\Http\Exception;
 use Swow\Http\Status;
 use Swow\Socket\Exception as SocketException;
 use Swow\WebSocket\Frame as WebSocketFrame;
-use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
-use SwowCloud\WebSocket\WebSocket\Exception\BadRequestException;
+use SwowCloud\Contract\StdoutLoggerInterface;
+use SwowCloud\WebSocket\Exception\BadRequestException;
 
 class Sender
 {
     protected ContainerInterface $container;
 
     /**
-     * @var mixed|\SwowCloud\WebSocket\Contract\StdoutLoggerInterface
+     * @var mixed|\SwowCloud\Contract\StdoutLoggerInterface
      */
     protected StdoutLoggerInterface $logger;
 

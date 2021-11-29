@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Db\Exception;
+namespace SwowCloud\WsServer\Db\Exception;
 
 class QueryException extends \PDOException
 {

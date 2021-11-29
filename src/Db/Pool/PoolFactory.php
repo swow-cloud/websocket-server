@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Db\Pool;
+namespace SwowCloud\WsServer\Db\Pool;
 
 use Hyperf\Contract\ConfigInterface;
 use Psr\Container\ContainerInterface;
-use SwowCloud\WebSocket\Db\Exception\DriverNotFoundException;
-use SwowCloud\WebSocket\Db\Exception\InvalidDriverException;
+use SwowCloud\WsServer\Db\Exception\DriverNotFoundException;
+use SwowCloud\WsServer\Db\Exception\InvalidDriverException;
 
 class PoolFactory
 {

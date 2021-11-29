@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Router;
+namespace SwowCloud\WsServer\Kernel\Router;
 
 use FastRoute\RouteCollector as FastRouteCollector;
 

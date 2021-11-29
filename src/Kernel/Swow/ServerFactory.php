@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace SwowCloud\WebSocket\Kernel\Swow;
+namespace SwowCloud\WsServer\Kernel\Swow;
 
 use Hyperf\Contract\ConfigInterface;
 use Psr\Container\ContainerInterface;
 use Swow\Socket;
-use SwowCloud\WebSocket\Contract\ServerInterface;
-use SwowCloud\WebSocket\Contract\StdoutLoggerInterface;
+use SwowCloud\Contract\ServerInterface;
+use SwowCloud\Contract\StdoutLoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ServerFactory
