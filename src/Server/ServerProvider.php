@@ -24,6 +24,7 @@ use Swow\WebSocket\Frame;
 use Swow\WebSocket\Opcode;
 use SwowCloud\Contract\LoggerInterface;
 use SwowCloud\Contract\StdoutLoggerInterface;
+use SwowCloud\RedisSubscriber\Subscriber;
 use SwowCloud\WebSocket\FdCollector;
 use SwowCloud\WebSocket\Handler\HandlerInterface;
 use SwowCloud\WebSocket\Middleware\Dispatcher as WsDispatcher;
@@ -151,6 +152,30 @@ class ServerProvider extends AbstractProvider
                 }
             }
         }
+    }
+
+    /**
+     * 测试代码
+     */
+    protected function RedisSubscriber(): void
+    {
+        \Swow\Coroutine::run(function () {
+            $sub = new Subscriber('127.0.0.1', 6379, '', 5000); // 连接失败将抛出异常
+            $sub->subscribe('foo', 'bar'); // 订阅失败将抛出异常
+
+            $chan = $sub->channel();
+            while (true) {
+                $data = $chan->pop();
+                if (empty($data)) { // 手动close与redis异常断开都会导致返回false
+                    if (!$sub->closed) {
+                        // redis异常断开处理
+                        var_dump('Redis connection is disconnected abnormally');
+                    }
+                    break;
+                }
+                var_dump($data);
+            }
+        });
     }
 
     protected function makeFastRoute(): void
