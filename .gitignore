@@ -29,3 +29,4 @@ redis
 contract
 websocket
 redis-subscriber
+redis-lock
