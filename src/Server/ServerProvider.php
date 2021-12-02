@@ -24,6 +24,7 @@ use Swow\WebSocket\Frame;
 use Swow\WebSocket\Opcode;
 use SwowCloud\Contract\LoggerInterface;
 use SwowCloud\Contract\StdoutLoggerInterface;
+use SwowCloud\RedisLock\RedisLock;
 use SwowCloud\RedisSubscriber\Subscriber;
 use SwowCloud\WebSocket\FdCollector;
 use SwowCloud\WebSocket\Handler\HandlerInterface;
@@ -69,6 +70,7 @@ class ServerProvider extends AbstractProvider
             ->get();
         $this->stdoutLogger->debug('MusicServer Start Successfully#');
         $this->makeFastRoute();
+
         $this->loop();
 
         while (true) {
@@ -176,6 +178,24 @@ class ServerProvider extends AbstractProvider
                 var_dump($data);
             }
         });
+    }
+
+    /**
+     * 测试redis-lock
+     */
+    protected function RedisLock()
+    {
+        try {
+            $lock = new RedisLock($this->container());
+            if (!$lock->lock('test', 1, 3)) {
+                $this->stdoutLogger->error('Lock Failure');
+            }
+            $this->stdoutLogger->info('Lock Success');
+            sleep(10);
+            $lock->unLock();
+        } catch (Throwable $e) {
+            dd($e);
+        }
     }
 
     protected function makeFastRoute(): void
