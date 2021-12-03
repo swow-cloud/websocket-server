@@ -30,3 +30,5 @@ contract
 websocket
 redis-subscriber
 redis-lock
+collision
+highlighter

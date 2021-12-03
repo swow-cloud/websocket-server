@@ -101,6 +101,7 @@ class ServerProvider extends AbstractProvider
                                 if ($request === null) {
                                     return;
                                 }
+
                                 if (env('DEBUG')) {
                                     /*@var LoggerInterface $logger */
                                     $logger = $this->container()
@@ -159,6 +160,7 @@ class ServerProvider extends AbstractProvider
     /**
      * 测试代码
      */
+    /*
     protected function RedisSubscriber(): void
     {
         \Swow\Coroutine::run(function () {
@@ -179,10 +181,12 @@ class ServerProvider extends AbstractProvider
             }
         });
     }
+    */
 
     /**
      * 测试redis-lock
      */
+    /*
     protected function RedisLock()
     {
         try {
@@ -197,6 +201,7 @@ class ServerProvider extends AbstractProvider
             dd($e);
         }
     }
+    */
 
     protected function makeFastRoute(): void
     {
@@ -261,28 +266,28 @@ class ServerProvider extends AbstractProvider
                         }
                     }
                     throw new HttpException(HttpStatus::BAD_REQUEST, 'Unsupported Upgrade Type');
-                } else {
-                    /**
-                     * $jws = make(Jws::class,[
-                     * $this->container()
-                     * ]);
-                     *
-                     * $coreJws = $jws->create([
-                     * 'iat' => time(),
-                     * 'nbf' => time(),
-                     * 'exp' => time() + 3600,
-                     * 'iss' => 'My service',
-                     * 'aud' => 'Your application',
-                     * ]);
-                     * $joseJws = $jws->unserialize('eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcyMTY3OTQsIm5iZiI6MTYzNzIxNjc5NCwiZXhwIjoxNjM3MjIwMzk0LCJpc3MiOiJNeSBzZXJ2aWNlIiwiYXVkIjoiWW91ciBhcHBsaWNhdGlvbiJ9.m0yj0AtOQVske15RJjIBJ4Zdhwj4TN006coKLARBGKQ');
-                     * dd($joseJws->getPayload());
-                     */
-                    $response = new Response();
-
-                    $response->text(file_get_contents(BASE_PATH . '/public/chat.html'));
-
-                    return $response;
                 }
+
+                /**
+                 * $jws = make(Jws::class,[
+                 * $this->container()
+                 * ]);
+                 *
+                 * $coreJws = $jws->create([
+                 * 'iat' => time(),
+                 * 'nbf' => time(),
+                 * 'exp' => time() + 3600,
+                 * 'iss' => 'My service',
+                 * 'aud' => 'Your application',
+                 * ]);
+                 * $joseJws = $jws->unserialize('eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcyMTY3OTQsIm5iZiI6MTYzNzIxNjc5NCwiZXhwIjoxNjM3MjIwMzk0LCJpc3MiOiJNeSBzZXJ2aWNlIiwiYXVkIjoiWW91ciBhcHBsaWNhdGlvbiJ9.m0yj0AtOQVske15RJjIBJ4Zdhwj4TN006coKLARBGKQ');
+                 * dd($joseJws->getPayload());
+                 */
+                $response = new Response();
+
+                $response->text(file_get_contents(BASE_PATH . '/public/chat.html'));
+
+                return $response;
             });
         }, [
             'routeCollector' => RouteCollector::class,
