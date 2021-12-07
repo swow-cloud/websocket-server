@@ -8,14 +8,13 @@ declare(strict_types=1);
 
 namespace SwowCloud\WsServer\Console;
 
-use Hyperf\Utils\Coroutine as SwowCoroutine;
 use SwowCloud\Collision\Handler;
 use SwowCloud\WsServer\Kernel\Provider\KernelProvider;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Throwable;
 
 /**
- * @command php bin/serendipity-job serendipity-job:start
+ * @command php bin/swow-cloud server:start
  */
 final class ServerCommand extends Command
 {
@@ -32,13 +31,11 @@ final class ServerCommand extends Command
     public function handle(): int
     {
         $this->showLogo();
-        SwowCoroutine::create(function () {
-            try {
-                $this->bootStrap();
-            } catch (Throwable $throwable) {
-                Handler::exceptionHandler($throwable);
-            }
-        });
+        try {
+            $this->bootStrap();
+        } catch (Throwable $throwable) {
+            Handler::exceptionHandler($throwable);
+        }
 
         return SymfonyCommand::SUCCESS;
     }
