@@ -140,7 +140,6 @@ class ServerProvider extends AbstractProvider
                         }
                     } catch (Throwable $throwable) {
                         $this->logger->error(format_throwable($throwable));
-                        throw $throwable;
                         // you can log error here
                     } finally {
                         ## close session
