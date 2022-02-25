@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace SwowCloud\WsServer\Kernel\Logger;
 
-use Hyperf\Utils\Context;
+use Hyperf\Context\Context;
 use Monolog\Processor\MemoryProcessor;
 
 class AppendRequestIdProcessor extends MemoryProcessor

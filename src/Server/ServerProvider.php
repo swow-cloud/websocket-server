@@ -11,8 +11,8 @@ namespace SwowCloud\WsServer\Server;
 use Carbon\Carbon;
 use DebugBacktraceHtml;
 use FastRoute\Dispatcher;
+use Hyperf\Context\Context;
 use Hyperf\Engine\Channel;
-use Hyperf\Utils\Context;
 use Hyperf\Utils\Coroutine as SwowCoroutine;
 use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
@@ -20,6 +20,7 @@ use Swow\Http\Exception as HttpException;
 use Swow\Http\Server\Connection;
 use Swow\Http\Server\Request as SwowRequest;
 use Swow\Http\Status;
+use Swow\Socket\Exception;
 use Swow\WebSocket\Frame;
 use Swow\WebSocket\Opcode;
 use SwowCloud\Contract\LoggerInterface;
@@ -146,7 +147,7 @@ class ServerProvider extends AbstractProvider
                         $connection->close();
                     }
                 });
-            } catch (SocketException|CoroutineException $exception) {
+            } catch (Exception|\Swow\Coroutine\Exception $exception) {
                 if (in_array($exception->getCode(), [EMFILE, ENFILE, ENOMEM], true)) {
                     sleep(1);
                 } else {

@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace SwowCloud\WsServer\Db;
 
 use Closure;
+use Hyperf\Context\Context;
 use Hyperf\Utils\ApplicationContext;
-use Hyperf\Utils\Context;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use SwowCloud\WsServer\Db\Pool\PoolFactory;
 use Throwable;

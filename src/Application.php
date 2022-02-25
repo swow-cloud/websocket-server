@@ -11,7 +11,6 @@ namespace SwowCloud\WsServer;
 use Dotenv\Dotenv;
 use Hyperf\Di\Container;
 use Psr\Container\ContainerInterface;
-use Swow\Debug\Debugger;
 use SwowCloud\WsServer\Config\Loader\YamlLoader;
 use SwowCloud\WsServer\Console\ServerCommand;
 use Symfony\Component\Config\FileLocator;
@@ -66,7 +65,7 @@ final class Application extends SymfonyApplication
     protected function debug(): void
     {
         if (env('DEBUG')) {
-            Debugger::runOnTTY('music-server');
+            Kernel\Swow\Debugger::runOnTTY('music-server');
         }
     }
 }
