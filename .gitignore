@@ -32,3 +32,5 @@ redis-subscriber
 redis-lock
 collision
 highlighter
+php-rpc-server
+rpc-server
