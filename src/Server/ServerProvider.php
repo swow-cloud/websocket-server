@@ -265,7 +265,7 @@ class ServerProvider extends AbstractProvider
                             return $connection->error(Status::INTERNAL_SERVER_ERROR, $e->getMessage());
                         }
                     }
-                    throw new HttpException(HttpStatus::BAD_REQUEST, 'Unsupported Upgrade Type');
+                    throw new HttpException(Status::BAD_REQUEST, 'Unsupported Upgrade Type');
                 }
 
                 /**
