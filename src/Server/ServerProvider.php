@@ -86,7 +86,7 @@ class ServerProvider extends AbstractProvider
                                 /**
                                  * @var Request $request
                                  */
-                                $request = $connection->recvHttpRequest(make(Request::class));
+                                $request = $connection->recvHttpRequestTo(make(Request::class));
                                 $response = $this->dispatcher($request, $connection);
                                 if ($response instanceof Response) {
                                     $connection->sendHttpResponse($response);
@@ -298,7 +298,7 @@ class ServerProvider extends AbstractProvider
     {
         $channel = new Channel();
         SwowCoroutine::create(function () use ($request, $channel, $connection) {
-            SwowCoroutine::defer(function () {
+            SwowCoroutine::defer(static function () {
                 Context::destroy(RequestInterface::class);
                 Context::destroy('connection');
             });
