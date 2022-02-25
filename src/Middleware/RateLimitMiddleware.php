@@ -20,6 +20,14 @@ use SwowCloud\WebSocket\Middleware\MiddlewareInterface;
 
 class RateLimitMiddleware implements MiddlewareInterface
 {
+    private RedisFactory $factory;
+
+    private mixed $operations;
+
+    private mixed $interval;
+
+    private string $key;
+
     public function __construct(RedisFactory $factory)
     {
         $this->factory = $factory;
