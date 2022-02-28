@@ -44,3 +44,8 @@ if (!function_exists('config')) {
         return $container->get(ConfigInterface::class)->get($key, $default);
     }
 }
+
+function memory_usage(): string
+{
+    return (!function_exists('memory_get_usage')) ? '0' : round(memory_get_usage() / 1024 / 1024, 2) . 'MB';
+}

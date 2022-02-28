@@ -1,25 +1,70 @@
 #!/usr/bin/env php
 <?php
-
 declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
 use SwowCloud\WsServer\Application;
+use Chevere\ThrowableHandler\ThrowableHandler;
+use function Chevere\Writer\streamFor;
+use Chevere\Writer\StreamWriter;
+use Chevere\Writer\Writers;
+use Chevere\Writer\WritersInstance;
+use function Chevere\Xr\registerThrowableHandler;
 
-define('BASE_PATH', dirname(__DIR__));
 ini_set('display_errors', 'on');
 ini_set('display_startup_errors', 'on');
 error_reporting(E_ALL);
 date_default_timezone_set('Asia/Shanghai');
-require_once BASE_PATH . '/vendor/autoload.php';
+
+foreach (
+    [
+        __DIR__ . '/../vendor/autoload.php' => __DIR__ . '/..',
+        __DIR__ . '/../../../autoload.php'  => __DIR__ . '/../../../..',
+    ] as $autoload => $defineBasePath
+) {
+    if (file_exists($autoload)) {
+        require_once $autoload;
+        define('BASE_PATH', $defineBasePath);
+        break;
+    }
+}
 
 if (!extension_loaded('swow')) {
-    exit('Swow extension is required');
+    exit('Swow extension is required#');
 }
-(static function () {
+
+(static function ()
+{
+    //register xr
+    new WritersInstance(
+        (new Writers())
+            ->withOutput(
+                new StreamWriter(
+                    streamFor('php://stdout', 'w')
+                )
+            )
+            ->withError(
+                new StreamWriter(
+                    streamFor('php://stderr', 'w')
+                )
+            )
+    );
+    set_error_handler(
+        ThrowableHandler::ERROR_AS_EXCEPTION
+    );
+    register_shutdown_function(
+        ThrowableHandler::SHUTDOWN_ERROR_AS_EXCEPTION
+    );
+    set_exception_handler(
+        ThrowableHandler::CONSOLE
+    );
+    registerThrowableHandler(true);
+
     Hyperf\Di\ClassLoader::init();
     /** @var ContainerInterface $container */
-    $container = require BASE_PATH . '/config/container.php';
+    /** @noinspection PhpIncludeInspection */
+    $container   = require BASE_PATH . '/config/container.php';
     $application = $container->get(Application::class);
+    $application->setCatchExceptions(false);
     $application->run();
 })();

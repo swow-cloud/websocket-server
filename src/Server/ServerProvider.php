@@ -9,13 +9,13 @@ declare(strict_types=1);
 namespace SwowCloud\WsServer\Server;
 
 use Carbon\Carbon;
-use DebugBacktraceHtml;
 use FastRoute\Dispatcher;
 use Hyperf\Context\Context;
 use Hyperf\Engine\Channel;
 use Hyperf\Utils\Coroutine as SwowCoroutine;
 use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
+use Ramsey\Uuid\Uuid;
 use Swow\Http\Exception as HttpException;
 use Swow\Http\Server\Connection;
 use Swow\Http\Server\Request as SwowRequest;
@@ -33,12 +33,14 @@ use SwowCloud\WebSocket\Middleware\Dispatcher as WsDispatcher;
 use SwowCloud\WebSocket\Middleware\MiddlewareInterface;
 use SwowCloud\WsServer\Kernel\Http\Request;
 use SwowCloud\WsServer\Kernel\Http\Response;
+use SwowCloud\WsServer\Kernel\Logger\AppendRequestIdProcessor;
 use SwowCloud\WsServer\Kernel\Provider\AbstractProvider;
 use SwowCloud\WsServer\Kernel\Router\RouteCollector;
 use SwowCloud\WsServer\Kernel\Swow\ServerFactory;
 use SwowCloud\WsServer\Kernel\Token\Jws;
 use SwowCloud\WsServer\Logger\LoggerFactory;
 use Throwable;
+use function Chevere\Xr\throwableHandler;
 use function FastRoute\simpleDispatcher;
 use const Swow\Errno\EMFILE;
 use const Swow\Errno\ENFILE;
@@ -126,13 +128,6 @@ class ServerProvider extends AbstractProvider
                                     } else {
                                         $logger->info($debug);
                                     }
-                                    if (config('SHOW_DEBUG_BACKTRACE') === 'console') {
-                                        /*
-                                        *\DebugBacktraceConsole::dump();
-                                        */
-                                    } else {
-                                        file_put_contents(BASE_PATH . '/runtimes/debug/' . uniqid('debug', true) . '.html', DebugBacktraceHtml::getDump(DebugBacktraceHtml::getBacktraces()));
-                                    }
                                 }
                             }
                             if (!$request->getKeepAlive()) {
@@ -140,7 +135,7 @@ class ServerProvider extends AbstractProvider
                             }
                         }
                     } catch (Throwable $throwable) {
-                        $this->logger->error(format_throwable($throwable));
+                        \Chevere\ThrowableHandler\throwableHandler($throwable);
                         // you can log error here
                     } finally {
                         ## close session
@@ -327,6 +322,12 @@ class ServerProvider extends AbstractProvider
                         $response = call($handler[0], $vars);
                         break;
                     } catch (Throwable $exception) {
+                        throwableHandler($exception, sprintf(
+                            '😭请求接口{%s}发生了错误,trace_id:%s,memory_usage:%s',
+                            $request->getUri()->getPath(),
+                            Context::getOrSet(AppendRequestIdProcessor::TRACE_ID, Uuid::uuid4()->toString()),
+                            memory_usage()
+                        ));
                         $this->logger->error(format_throwable($exception));
                         $response = new Response();
                         $response->error(Status::INTERNAL_SERVER_ERROR);
