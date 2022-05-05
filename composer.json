@@ -1,6 +1,6 @@
 {
   "name": "swow-cloud/ws-server",
-  "description": "description",
+  "description": "swow websocket-server",
   "license": "proprietary",
   "authors": [
     {
