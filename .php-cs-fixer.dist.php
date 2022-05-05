@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 $header = <<<'EOF'
 This file is part of SwowCloud
-@license  https://github.com/swow-cloud/music-server/blob/main/LICENSE
+@license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
 EOF;
 
 return (new PhpCsFixer\Config())

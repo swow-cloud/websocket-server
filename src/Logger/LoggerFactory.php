@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of SwowCloud
- * @license  https://github.com/swow-cloud/music-server/blob/main/LICENSE
+ * @license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
  */
 
 declare(strict_types=1);
@@ -38,7 +38,7 @@ class LoggerFactory
         $this->config = $container->get(ConfigInterface::class);
     }
 
-    public function make($name = 'swow-cloud', $group = 'default'): LoggerInterface
+    public function make(string $name = 'swow-cloud', string $group = 'default'): LoggerInterface
     {
         $config = $this->config->get('logger');
         if (!isset($config[$group])) {
@@ -56,7 +56,7 @@ class LoggerFactory
         ]);
     }
 
-    public function get($name = 'swow-cloud', $group = 'default'): LoggerInterface
+    public function get(string $name = 'swow-cloud', string $group = 'default'): LoggerInterface
     {
         if (isset($this->loggers[$group][$name]) && $this->loggers[$group][$name] instanceof Logger) {
             return $this->loggers[$group][$name];

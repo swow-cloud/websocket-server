@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of SwowCloud
- * @license  https://github.com/swow-cloud/music-server/blob/main/LICENSE
+ * @license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
  */
 
 declare(strict_types=1);
@@ -28,10 +28,10 @@ class ExampleHandler extends AbstractWsHandler
     public function process(Connection $connection, Frame $frame): void
     {
         try {
-            //单点推送
+            // 单点推送
             $frame->getPayloadData()->rewind()->write("You said: {$frame->getPayloadData()}");
             $this->sender->push($connection->getFd(), $frame);
-            //broadcast message
+            // broadcast message
             $frame->getPayloadData()->rewind()->write(sprintf("Session:[%s] broadcast message {$frame->getPayloadData()}", $this->getter->get($connection)));
             $this->sender->broadcastMessage($frame);
         } catch (\Throwable $throwable) {

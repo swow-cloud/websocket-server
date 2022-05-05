@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of SwowCloud
- * @license  https://github.com/swow-cloud/music-server/blob/main/LICENSE
+ * @license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
  */
 
 declare(strict_types=1);
@@ -16,11 +16,13 @@ use Hyperf\Utils\Coroutine as SwowCoroutine;
 use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
 use Ramsey\Uuid\Uuid;
-use Swow\Http\Exception as HttpException;
+use Swow\CoroutineException;
+use Swow\Errno;
+use Swow\Http\ResponseException as HttpException;
 use Swow\Http\Server\Connection;
 use Swow\Http\Server\Request as SwowRequest;
 use Swow\Http\Status;
-use Swow\Socket\Exception;
+use Swow\SocketException;
 use Swow\WebSocket\Frame;
 use Swow\WebSocket\Opcode;
 use SwowCloud\Contract\LoggerInterface;
@@ -42,9 +44,6 @@ use SwowCloud\WsServer\Logger\LoggerFactory;
 use Throwable;
 use function Chevere\Xr\throwableHandler;
 use function FastRoute\simpleDispatcher;
-use const Swow\Errno\EMFILE;
-use const Swow\Errno\ENFILE;
-use const Swow\Errno\ENOMEM;
 
 /**
  * Class ServerProvider
@@ -106,7 +105,7 @@ class ServerProvider extends AbstractProvider
                                 }
 
                                 if (env('DEBUG')) {
-                                    /*@var LoggerInterface $logger */
+                                    /* @var LoggerInterface $logger */
                                     $logger = $this->container()
                                         ->get(LoggerFactory::class)
                                         ->get('request');
@@ -138,12 +137,12 @@ class ServerProvider extends AbstractProvider
                         \Chevere\ThrowableHandler\throwableHandler($throwable);
                         // you can log error here
                     } finally {
-                        ## close session
+                        # # close session
                         $connection->close();
                     }
                 });
-            } catch (Exception|\Swow\Coroutine\Exception $exception) {
-                if (in_array($exception->getCode(), [EMFILE, ENFILE, ENOMEM], true)) {
+            } catch (SocketException|CoroutineException $exception) {
+                if (in_array($exception->getCode(), [Errno::EMFILE, Errno::ENFILE, Errno::ENOMEM], true)) {
                     sleep(1);
                 } else {
                     break;

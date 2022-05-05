@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of SwowCloud
- * @license  https://github.com/swow-cloud/music-server/blob/main/LICENSE
+ * @license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
  */
 
 declare(strict_types=1);
@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace SwowCloud\WsServer\Middleware;
 
 use Psr\Http\Message\RequestInterface;
-use Swow\Http\Exception as HttpException;
+use Swow\Http\ResponseException;
 use Swow\Http\Server\Connection;
 use Swow\Http\Status;
 use SwowCloud\RateLimit\Exception\LimitExceeded;
@@ -49,7 +49,7 @@ class RateLimitMiddleware implements MiddlewareInterface
             $rateLimiter = new RedisRateLimiter(Rate::custom($this->operations, $this->interval), $redis);
             $rateLimiter->limit($this->key);
         } catch (LimitExceeded) {
-            throw new HttpException(Status::TOO_MANY_REQUESTS, 'WebSocket connection limit exceeded');
+            throw new ResponseException(Status::TOO_MANY_REQUESTS, 'WebSocket connection limit exceeded');
         }
     }
 }
