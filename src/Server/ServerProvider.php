@@ -70,7 +70,7 @@ class ServerProvider extends AbstractProvider
         $this->logger = $this->container()
             ->get(LoggerFactory::class)
             ->get();
-        $this->stdoutLogger->debug('MusicServer Start Successfully#');
+        $this->stdoutLogger->debug('Websocket-Server Start Successfully#');
         $this->makeFastRoute();
 
         $this->loop();
@@ -298,7 +298,7 @@ class ServerProvider extends AbstractProvider
             });
             Context::set('connection', $connection);
             Context::set(RequestInterface::class, $request);
-            $uri = $request->getPath();
+            $uri = $request->getUri()->getPath();
             $method = $request->getMethod();
             if (false !== $pos = strpos($uri, '?')) {
                 $uri = substr($uri, 0, $pos);

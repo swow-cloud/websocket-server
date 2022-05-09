@@ -1,17 +1,17 @@
 <?php
+/**
+ * This file is part of SwowCloud
+ * @license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
+ */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 class IndexController
 {
-    /**
-     *
-     * @return void
-     */
     #[Route('/index')]
     #[Route('/index_alias')]
     public function index()
     {
-        echo "hello!world" . PHP_EOL;
+        echo 'hello!world' . PHP_EOL;
     }
 }

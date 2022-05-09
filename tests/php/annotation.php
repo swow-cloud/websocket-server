@@ -1,6 +1,10 @@
 <?php
+/**
+ * This file is part of SwowCloud
+ * @license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
+ */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 #[Attribute(Attribute::TARGET_METHOD | Attribute::TARGET_FUNCTION | Attribute::IS_REPEATABLE)]
 class Route
@@ -11,15 +15,16 @@ class Route
     {
     }
 
-    public function setHandler($handler) : self
+    public function setHandler($handler): self
     {
         $this->handler = $handler;
+
         return $this;
     }
 
     public function run()
     {
-        call_user_func([new $this->handler->class, $this->handler->name]);
+        call_user_func([new $this->handler->class(), $this->handler->name]);
     }
 }
 
@@ -29,28 +34,24 @@ class IndexController
     #[Route(path: '/index', methods: ['"get'])]
     public function index()
     {
-        echo "Hello,word" . PHP_EOL;
+        echo 'Hello,word' . PHP_EOL;
     }
 
-    /**
-     * @return void
-     */
     #[Route('/test')]
     public function test()
     {
-        echo "Test" . PHP_EOL;
+        echo 'Test' . PHP_EOL;
     }
-
 }
 
 class CliRouter
 {
     /**
-     * @var \Route[]  array
+     * @var \Route[] array
      */
     protected static array $routes = [];
 
-    public static function setRoutes(array $routes) : void
+    public static function setRoutes(array $routes): void
     {
         self::$routes = $routes;
     }
@@ -63,7 +64,7 @@ class CliRouter
             }
         }
 
-        die('404' . PHP_EOL);
+        exit('404' . PHP_EOL);
     }
 }
 

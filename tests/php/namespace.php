@@ -1,47 +1,53 @@
 <?php
+/**
+ * This file is part of SwowCloud
+ * @license  https://github.com/swow-cloud/websocket-server/blob/main/LICENSE
+ */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
-namespace
-{
-
+namespace {
     function dump_attributes($attributes)
-    { $arr = [];
+    {
+        $arr = [];
         foreach ($attributes as $attribute) {
             $arr[] = ['name' => $attribute->getName(), 'args' => $attribute->getArguments()];
         }
         var_dump($arr);
-
     }
 }
 
-
 namespace Doctrine\ORM\Mapping {
-    class Entity {
+    class Entity
+    {
     }
 }
 
 namespace Doctrine\ORM\Attributes {
-    class Table {
+    class Table
+    {
     }
 }
 
 namespace Foo {
-    use Doctrine\ORM\Mapping\Entity;
-    use Doctrine\ORM\Mapping as ORM;
     use Doctrine\ORM\Attributes;
+    use Doctrine\ORM\Mapping as ORM;
+    use Doctrine\ORM\Mapping\Entity;
 
-    #[Entity("imported class")]
-    #[ORM\Entity("imported namespace")]
-    #[\Doctrine\ORM\Mapping\Entity("absolute from namespace")]
-    #[\Entity("import absolute from global")]
+    #[Entity('imported class')]
+    #[ORM\Entity('imported namespace')]
+    #[\Doctrine\ORM\Mapping\Entity('absolute from namespace')]
+    #[\Entity('import absolute from global')]
     #[Attributes\Table()]
-    function foo() {
+    function foo()
+    {
     }
 }
 
 namespace {
-    class Entity {}
+    class Entity
+    {
+    }
 
     dump_attributes((new ReflectionFunction('Foo\foo'))->getAttributes());
 }
