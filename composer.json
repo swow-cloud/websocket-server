@@ -75,30 +75,6 @@
     "sort-packages": true
   },
   "repositories": [
-    {
-      "type": "path",
-      "url": "./rate-limit"
-    },
-    {
-      "type": "path",
-      "url": "./redis"
-    },
-    {
-      "type": "path",
-      "url": "./contract"
-    },
-    {
-      "type": "path",
-      "url": "./websocket"
-    },
-    {
-      "type": "path",
-      "url": "./redis-subscriber"
-    },
-    {
-      "type": "path",
-      "url": "./redis-lock"
-    }
   ],
   "scripts": {
     "post-root-package-install": [
