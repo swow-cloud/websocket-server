@@ -10,6 +10,7 @@ namespace SwowCloud\WsServer\Kernel\Coroutine;
 
 use Hyperf\Utils\Coroutine as SwowCo;
 use Swow\Channel;
+use function sprintf;
 
 class Parallel
 {
@@ -32,7 +33,7 @@ class Parallel
 
     public function add(callable $callable, $key = null): void
     {
-        if (is_null($key)) {
+        if ($key === null) {
             $this->callbacks[] = $callable;
         } else {
             $this->callbacks[$key] = $callable;
@@ -42,7 +43,8 @@ class Parallel
     /** @noinspection DisconnectedForeachInstructionInspection */
     public function wait(bool $throw = true): array
     {
-        $result = $throwables = [];
+        $throwables = [];
+        $result = $throwables;
         $wg = new WaitGroup();
         $wg->add(count($this->callbacks));
 
@@ -90,7 +92,7 @@ class Parallel
     {
         $output = '';
         foreach ($throwables as $key => $value) {
-            $output .= \sprintf('(%s) %s: %s' . PHP_EOL . '%s' . PHP_EOL, $key, get_class($value), $value->getMessage(), $value->getTraceAsString());
+            $output .= sprintf('(%s) %s: %s' . PHP_EOL . '%s' . PHP_EOL, $key, get_class($value), $value->getMessage(), $value->getTraceAsString());
         }
 
         return $output;

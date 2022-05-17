@@ -21,7 +21,7 @@ class Request extends SwowRequest
         return array_merge(
             $this->getQueryParams(),
             Json::decode(
-                $this->getBodyAsString() !== '' ? $this->getBodyAsString() : '{}',
+                $this->getBody()->fetchString(),
             )
         ) ?? [];
     }
@@ -29,7 +29,7 @@ class Request extends SwowRequest
     public function post(string $key = null, mixed $default = null): mixed
     {
         $body = Json::decode(
-            $this->getBodyAsString(),
+            $this->getBody()->fetchString(),
         );
 
         return $key === null ? $body : $body[$key] ?? $default;
@@ -96,7 +96,7 @@ class Request extends SwowRequest
         $data = array_merge(
             $this->getQueryParams(),
             Json::decode(
-                $this->getBodyAsString() !== '' ? $this->getBodyAsString() : '{}'
+                $this->getBody()->fetchString()
             )
         );
 
