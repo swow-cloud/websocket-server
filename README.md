@@ -1,25 +1,11 @@
 # websocket-server
 
-[消息加密解密](https://www.chenxuhou.com/detail/329.html)
+1.支持鉴权
 
-# rpc 
-[rpc实现地址](https://juejin.cn/post/7016717164509921311)
+2.支持限流
 
-1.从零开始手写 RPC (01) 基于 websocket 实现
+3.提供websocket客户端 工具
 
-2.实现客户端和服务端
-
-3.如何实现客户端调用服务端？
-
-4.序列化
-
-5.reflect 反射实现通用调用之服务端
-
-6.reflect 反射实现通用调用之客户端
-
-7.timeout 超时处理
-
-# 网关
-[网关实现](https://juejin.cn/post/6986652925963534350#heading-16)
+4.支持群发和单聊消息
 
 # 慢慢封装一些swow的组件
