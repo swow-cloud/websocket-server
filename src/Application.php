@@ -65,7 +65,7 @@ final class Application extends SymfonyApplication
     protected function debug(): void
     {
         if (env('DEBUG')) {
-//            Kernel\Swow\Debugger::runOnTTY('music-server');
+            Kernel\Swow\Debugger::runOnTTY('websocket-server');
         }
     }
 }

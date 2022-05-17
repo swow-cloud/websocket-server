@@ -194,7 +194,7 @@ abstract class Command extends SymfonyCommand
 |____/ \_/\_/ \___/ \_/\_/       \____|_|\___/ \__,_|\__,_|
 LOGO));
         $this->output->writeln([
-            '<info>WebSocket For Swow-Cloud</info>',
+            '<info>WebSocket-Server For Swow-Cloud</info>',
             '<info>===================================</info>',
             '',
         ]);
