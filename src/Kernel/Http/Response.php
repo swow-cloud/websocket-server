@@ -49,7 +49,7 @@ class Response extends SwowResponse
 
     private function setResponseServerHeader(): void
     {
-        $this->setHeader('Server', 'Serendipity-Job');
+        $this->setHeader('Server', 'Swow-Cloud');
     }
 
     protected function withJsonResponseHeader(): void
