@@ -29,3 +29,7 @@ php bin/blend server:stop   #关闭server
 
 ```
 # 慢慢封装一些swow的组件
+
+1.redis-lock
+
+2.redis-subscriber
