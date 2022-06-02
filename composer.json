@@ -2,6 +2,9 @@
   "name": "swow-cloud/ws-server",
   "description": "swow websocket-server demo",
   "license": "proprietary",
+  "support": {
+    "issues": "https://github.com/swow-cloud/websokcet-server/issues"
+  },
   "authors": [
     {
       "name": "heping",
