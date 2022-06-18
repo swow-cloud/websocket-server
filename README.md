@@ -12,6 +12,7 @@
 ## 命令
 
 ```bash
+
 php bin/blend server:start  #启动server 需关掉debug模式
 
 ➜  websocket-server git:(main) ✗ php bin/blend server:start 
@@ -37,3 +38,28 @@ php bin/blend server:stop   #关闭server
 3.websocket
 
 4.rate-limit
+
+## 通过phpbrew安装php8.1.7
+```bash
+phpbrew -d install 8.1.7 \
+    +default \
+    +fpm \
+    +iconv \
+    +curl \
+    +ctype \
+    +filter \
+    +json \
+    +mbstring \
+    +openssl \
+    +pdo \
+    +sqlite \
+    +mysql \
+    +phar \
+    +sockets \
+    +zlib \
+    -- \
+    --with-zlib-dir=/opt/homebrew/opt/zlib/lib \
+    --with-gd=shared \
+    --without-pcre-jit \
+    --enable-gd-native-ttf 
+```
