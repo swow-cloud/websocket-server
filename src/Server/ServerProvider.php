@@ -207,7 +207,7 @@ class ServerProvider extends AbstractProvider
                 $request = Context::get(RequestInterface::class);
                 if ($upgrade = $request->getUpgrade()) {
                     /**
-                     * @var \Swow\Http\Server\Connection $connection
+                     * @var Connection $connection
                      */
                     $connection = Context::get('connection');
 
