@@ -19,6 +19,7 @@ use Ramsey\Uuid\Uuid;
 use Swow\CoroutineException;
 use Swow\Errno;
 use Swow\Http\ResponseException as HttpException;
+use Swow\Http\Server;
 use Swow\Http\Server\Connection;
 use Swow\Http\Server\Request as SwowRequest;
 use Swow\Http\Status;
@@ -60,7 +61,7 @@ class ServerProvider extends AbstractProvider
     public function bootApp(): void
     {
         /**
-         * @var \Swow\Http\Server $server
+         * @var Server $server
          */
         $server = $this->container()
             ->make(ServerFactory::class)
