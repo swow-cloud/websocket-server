@@ -17,6 +17,10 @@ class Response extends SwowResponse
 {
     protected ?Buffer $buffer = null;
 
+    public const RESPONSE_HEADER = [
+        '.js' => 'text/javascript',
+    ];
+
     public function json(array $data, int $flags = JSON_THROW_ON_ERROR, int $depth = 512): self
     {
         $this->withJsonResponseHeader();
@@ -58,7 +62,7 @@ class Response extends SwowResponse
         $this->setHeader('content-type', 'application/json; charset=utf-8');
     }
 
-    protected function makeBuffer(int $length = \Swow\Buffer::DEFAULT_SIZE): void
+    protected function makeBuffer(int $length = \Swow\Buffer::PAGE_SIZE): void
     {
         $this->buffer = $this->buffer ?? make(Buffer::class, ['size' => $length]);
     }
