@@ -51,7 +51,7 @@
     "swow-cloud/redis-subscriber": "3.0.x-dev",
     "swow-cloud/sockets": "^1.1",
     "swow-cloud/websocket": "3.0.x-dev",
-    "swow/swow": "dev-develop",
+    "swow/swow": "^0.2",
     "symfony/config": "^5.3",
     "symfony/console": "^5.3",
     "symfony/serializer": "^5.3",
