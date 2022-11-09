@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到Swow-CHAT|聊天系统</title>
+</head>
+<script src="./assets/vendor/vue.js"></script>
+<body>
+<div id="app"></div>
+
+<script type="module">
+  import CodePenVueComponent from "./assets/js/script.js";
+  new Vue(CodePenVueComponent).$mount('#app');
+  setTimeout(function (){
+     window.location.href = "/index.html"
+  },5000)
+</script>
+</body>
+</html>

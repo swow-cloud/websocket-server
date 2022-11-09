@@ -48,7 +48,6 @@ use function FastRoute\simpleDispatcher;
 
 /**
  * Class ServerProvider
- *
  */
 class ServerProvider extends AbstractProvider
 {
@@ -281,6 +280,27 @@ class ServerProvider extends AbstractProvider
                 $response = new Response();
 
                 $response->text(file_get_contents(BASE_PATH . '/public/chat.html'));
+
+                return $response;
+            });
+            $router->get('/', function () {
+                $response = new Response();
+
+                $response->text(file_get_contents(BASE_PATH . '/public/welcome.html'));
+
+                return $response;
+            });
+            // 加载静态资源
+            $router->get('/assets/{path:.+}', function ($path) {
+                $response = new Response();
+                if (false === ($index = strrpos($path, '.'))) {
+                    $response->text('');
+
+                    return $response;
+                }
+                $type = substr($path, $index);
+                $header = $response::RESPONSE_HEADER[$type] ?? '';
+                $response->setHeader('Content-Type', $header)->getBody()->write(file_get_contents(BASE_PATH . '/public/assets/' . $path));
 
                 return $response;
             });

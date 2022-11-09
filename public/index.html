@@ -1,0 +1,1213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+<title>Home</title>
+<link rel="stylesheet" href="assets/fonts/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="assets/vendor/bootstrap-datepicker.min.css">
+
+<link rel="stylesheet" href="assets/css/style.min.css">
+<body>
+<div id="layout" class="theme-cyan">
+
+<div class="navigation navbar justify-content-center py-xl-4 py-md-3 py-0 px-3">
+
+<a href="index.html" class="brand">
+	<img src="assets/img/logo2.png" alt="" style="width: 50px;">
+ </a>
+
+<div class="nav flex-md-column nav-pills flex-grow-1" role="tablist" aria-orientation="vertical">
+<a class="mb-xl-3 mb-md-2 nav-link" data-toggle="pill" href="#nav-tab-user" role="tab">
+<img src="assets/img/avatar5.png" class="avatar sm rounded-circle" alt="user avatar" />
+</a>
+<a class="mb-xl-3 mb-md-2 nav-link active" data-toggle="pill" href="#nav-tab-chat" role="tab"><i class="zmdi zmdi-comment-alt"></i></a>
+<a class="mb-xl-3 mb-md-2 nav-link" data-toggle="pill" href="#nav-tab-phone" role="tab"><i class="zmdi zmdi-phone"></i></a>
+<a class="mb-xl-3 mb-md-2 nav-link" data-toggle="pill" href="#nav-tab-contact" role="tab"><i class="zmdi zmdi-account-circle"></i></a>
+<a class="mb-xl-3 mb-md-2 nav-link d-none d-sm-block flex-grow-1" data-toggle="pill" href="#nav-tab-pages" role="tab"><i class="zmdi zmdi-layers"></i></a>
+<a class="mt-xl-3 mt-md-2 nav-link light-dark-toggle" href="javascript:void(0);">
+<i class="zmdi zmdi-brightness-2"></i>
+<input class="light-dark-btn" type="checkbox">
+</a>
+<a class="mt-xl-3 mt-md-2 nav-link d-none d-sm-block" href="pages/settings.html" role="tab"><i class="zmdi zmdi-settings"></i></a>
+</div>
+
+<button type="submit" class="btn sidebar-toggle-btn shadow-sm"><i class="zmdi zmdi-menu"></i></button>
+</div>
+
+
+<div class="sidebar border-end py-xl-4 py-3 px-xl-4 px-3">
+<div class="tab-content">
+
+<div class="tab-pane fade" id="nav-tab-user" role="tabpanel">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+<h3 class="mb-0 text-primary">Profile</h3>
+<div>
+<a href="pages/login.html" title="" class="btn btn-dark">Sign Out</a>
+</div>
+</div>
+
+<div class="form-group input-group-lg search mb-3">
+<i class="zmdi zmdi-search"></i>
+<input type="text" class="form-control" placeholder="Search...">
+</div>
+
+<div class="card border-0 text-center pt-3 mb-4">
+<div class="card-body">
+<div class="card-user-avatar">
+<img src="assets/img/avatar5.png" alt="avatar" style="width: 150px" />
+<button type="button" class="btn btn-secondary btn-sm"><i class="zmdi zmdi-edit"></i></button>
+</div>
+<div class="card-user-detail mt-4">
+<h5>Your Name</h5>
+<span class="text-muted"><a href="">info@domain.com</a></span>
+<p>+628xxxxxxx - Makassar (IDN)</p>
+<div class="social">
+<a class="icon p-2" href="#" data-toggle="tooltip" title="Facebook"><i class="zmdi zmdi-facebook-box"></i></a>
+<a class="icon p-2" href="#" data-toggle="tooltip" title="Youtube"><i class="zmdi zmdi-youtube-play"></i></a>
+<a class="icon p-2" href="#" data-toggle="tooltip" title="Twitter"><i class="zmdi zmdi-twitter"></i></a>
+<a class="icon p-2" href="#" data-toggle="tooltip" title="Instagram"><i class="zmdi zmdi-instagram"></i></a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card border-0">
+<ul class="list-group custom list-group-flush">
+
+<li class="list-group-item d-flex justify-content-between align-items-center">
+<span>Color scheme</span>
+<ul class="choose-skin list-unstyled mb-0">
+<li data-theme="indigo" data-toggle="tooltip" title="Theme-Indigo"><div class="indigo"></div></li>
+<li class="active" data-theme="cyan" data-toggle="tooltip" title="Theme-Darkred"><div class="cyan"></div></li>
+<li data-theme="green" data-toggle="tooltip" title="Theme-Green"><div class="green"></div></li>
+<li data-theme="blush" data-toggle="tooltip" title="Theme-Blush"><div class="blush"></div></li>
+<li data-theme="dark" data-toggle="tooltip" title="Theme-Dark"><div class="dark"></div></li>
+</ul>
+</li>
+<li class="list-group-item d-flex justify-content-between align-items-center">
+<span>Facebook notifications</span>
+<label class="c_checkbox">
+<input type="checkbox" checked="">
+<span class="checkmark"></span>
+</label>
+</li>
+<li class="list-group-item d-flex justify-content-between align-items-center">
+<span>Youtube notifications</span>
+<label class="c_checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+</li>
+<li class="list-group-item d-flex justify-content-between align-items-center">
+<span>Twitter notifications</span>
+<label class="c_checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+</li>
+<li class="list-group-item d-flex justify-content-between align-items-center">
+<span>Instagram notifications</span>
+<label class="c_checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+</li>
+</div>
+</div>
+
+<div class="tab-pane fade show active" id="nav-tab-chat" role="tabpanel">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+<h3 class="mb-0 text-primary">Chat</h3>
+<div>
+<button class="btn btn-dark" type="button">New Chat</button>
+</div>
+</div>
+
+<div class="form-group input-group-lg search mb-3">
+<i class="zmdi zmdi-search"></i>
+<input type="text" class="form-control" placeholder="Search...">
+</div>
+
+<ul class="chat-list">
+<li class="header d-flex justify-content-between ps-3 pe-3 mb-1">
+<span>RECENT CHATS</span>
+<div class="dropdown">
+<a class="btn btn-link px-1 py-0 border-0 text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-filter-list"></i></a>
+<div class="dropdown-menu dropdown-menu-right">
+<a class="dropdown-item" href="#">Action</a>
+<a class="dropdown-item" href="#">Another action</a>
+<a class="dropdown-item" href="#">Something else here</a>
+</div>
+</div>
+</li>
+<li>
+<a href="pages/bot-chat.html" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<div class="avatar rounded-circle no-image bg-primary text-light">
+<span><i class="zmdi zmdi-comment-text"></i></span>
+</div>
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Chat Bot</h6>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-circle text-success"></i> Online
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="online">
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="pages/single-chat.html" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<img class="avatar rounded-circle" src="assets/img/avatar2.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 1</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">09:00 am</p>
+</div>
+<div class="text-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit...</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="pages/group-chat.html" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<div class="avatar rounded-circle no-image cyan">
+<span>DG</span>
+</div>
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Design Group</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">07:00 am</p>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-file-text me-1"></i> Lorem ipsum dolor sit amet consectetur, adipisicing....
+<div class="avatar-list avatar-list-stacked mt-1">
+<img class="avatar xs rounded" src="assets/img/avatar4.png" data-toggle="tooltip" data-placement="top" title="Jojo">
+<img class="avatar xs rounded" src="assets/img/avatar3.png" data-toggle="tooltip" data-placement="top" title="Jeje">
+<img class="avatar xs rounded" src="assets/img/avatar5.png" data-toggle="tooltip" data-placement="top" title="Jaja">
+<img class="avatar xs rounded" src="assets/img/avatar1.jpg" data-toggle="tooltip" data-placement="top" title="Jiji">
+</div>
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="away">
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<img class="avatar rounded-circle" src="assets/img/avatar4.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 2</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">20:00 pm</p>
+</div>
+<div class="text-truncate">
+Lorem ipsum dolor sit amet consectetur.
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<img class="avatar rounded-circle" src="assets/img/avatar2.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 3</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">23:10 pm</p>
+</div>
+<div class="text-truncate"><i class="zmdi zmdi-file-text me-1"></i> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga....</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="online">
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<img class="avatar rounded-circle" src="assets/img/avatar1.jpg" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 4</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">17:00 am</p>
+</div>
+<div class="text-truncate">
+<div class="wave">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="away">
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<img class="avatar rounded-circle" src="assets/img/avatar6.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 5</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">11:00 am</p>
+</div>
+<div class="text-truncate"><i class="zmdi zmdi-phone-end me-1"></i> Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<img class="avatar rounded-circle" src="assets/img/avatar5.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 6</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">01-01-2021</p>
+</div>
+<div class="text-truncate">Hello, Terry are you there?</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<div class="avatar rounded-circle no-image cyan">
+<span>DC</span>
+</div>
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Daeng Coding</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">02-01-2021</p>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-file-text me-1"></i> Lorem ipsum dolor sit amet, consectetur...
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<div class="avatar rounded-circle no-image green">
+<span>JD</span>
+</div>
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">John Doe</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">21:00 pm</p>
+</div>
+<div class="text-truncate">
+Lorem ipsum dolor sit amet consectetur....
+<div class="avatar-list avatar-list-stacked mt-1">
+<img class="avatar xs rounded" src="assets/img/avatar1.jpg" data-toggle="tooltip" data-placement="top" title="Jojo">
+<img class="avatar xs rounded" src="assets/img/avatar2.png" data-toggle="tooltip" data-placement="top" title="Jeje">
+</div>
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<img class="avatar rounded-circle" src="assets/img/avatar3.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 7</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">03-01-2121</p>
+</div>
+<div class="text-truncate">Hello, Lorem ipsum dolor sit amet.</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<span class="status rounded-circle"></span>
+<div class="avatar rounded-circle no-image red">
+<span>YC</span>
+</div>
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Youtube Creator</h6>
+<p class="small text-muted text-nowrap ms-4 mb-0">04-01-2021</p>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-file-text me-1"></i> Lorem ipsum dolor sit amet consectetur...
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+
+<div class="tab-pane fade" id="nav-tab-phone" role="tabpanel">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+<h3 class="mb-0 text-primary">Call</h3>
+<div>
+<button class="btn btn-dark" type="button">New Call</button>
+</div>
+</div>
+
+<div class="form-group input-group-lg search mb-3">
+<i class="zmdi zmdi-search"></i>
+<input type="text" class="form-control" placeholder="Search...">
+</div>
+
+<ul class="chat-list">
+<li class="header d-flex justify-content-between ps-3 pe-3 mb-1">
+<span>RECENT CALL</span>
+<div class="dropdown">
+<a class="btn btn-link px-1 py-0 border-0 text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+<div class="dropdown-menu dropdown-menu-right">
+<a class="dropdown-item" href="#">Action</a>
+<a class="dropdown-item" href="#">Another action</a>
+ <a class="dropdown-item" href="#">Something else here</a>
+</div>
+</div>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar1.jpg" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 1</h6>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-phone-missed me-1"></i> Yesterday at 07:00 AM
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar2.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 2</h6>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-phone-missed me-1"></i> Yesterday at 09:00 AM
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+ <div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar3.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 3</h6>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-phone-missed me-1"></i> Yesterday at 11:21 AM
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar4.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 4</h6>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-phone-forwarded me-1"></i> Yesterday at 21:00 PM
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar5.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 5</h6>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-phone-missed me-1"></i> Yesterday at 00:08 AM
+</div>
+</div>
+</div>
+ </div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar6.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 6</h6>
+</div>
+<div class="text-truncate">
+<i class="zmdi zmdi-phone-forwarded me-1"></i> Yesterday at 16:00 AM
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+
+<div class="tab-pane fade" id="nav-tab-contact" role="tabpanel">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+<h3 class="mb-0 text-primary">Contact</h3>
+<div>
+<button class="btn btn-dark" type="button" data-toggle="modal" data-target="#InviteFriends">Invite Friends</button>
+</div>
+</div>
+
+<div class="form-group input-group-lg search mb-3">
+<i class="zmdi zmdi-search"></i>
+<input type="text" class="form-control" placeholder="Search...">
+</div>
+
+<ul class="chat-list">
+<li class="header d-flex justify-content-between ps-3 pe-3 mb-1">
+<span>A</span>
+<div class="dropdown">
+<a class="btn btn-link px-1 py-0 border-0 text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+<div class="dropdown-menu dropdown-menu-right">
+<a class="dropdown-item" href="#">Action</a>
+<a class="dropdown-item" href="#">Another action</a>
+<a class="dropdown-item" href="#">Something else here</a>
+</div>
+</div>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+ <div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar1.jpg" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 1</h6>
+</div>
+<div class="text-truncate">
+last seen 1 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar2.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 2</h6>
+</div>
+<div class="text-truncate">
+last seen 2 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="header d-flex justify-content-between ps-3 pe-3 mb-1">
+<span>C</span>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar3.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 3</h6>
+</div>
+<div class="text-truncate">
+last seen 3 day ago
+</div>
+</div>
+</div>
+</div>
+ </a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar4.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 4</h6>
+</div>
+<div class="text-truncate">
+last seen 1 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar5.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 5</h6>
+</div>
+<div class="text-truncate">
+last seen 1 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="header d-flex justify-content-between ps-3 pe-3 mb-1">
+<span>D</span>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar6.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 6</h6>
+</div>
+<div class="text-truncate">
+last seen 1 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="header d-flex justify-content-between ps-3 pe-3 mb-1">
+<span>M</span>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar1.jpg" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 7</h6>
+</div>
+<div class="text-truncate">
+last seen 1 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar2.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 8</h6>
+</div>
+<div class="text-truncate">
+last seen 1 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+<li class="header d-flex justify-content-between ps-3 pe-3 mb-1">
+<span>T</span>
+</li>
+<li>
+<div class="hover_action">
+<button type="button" class="btn btn-link text-info"><i class="zmdi zmdi-eye"></i></button>
+<button type="button" class="btn btn-link text-warning"><i class="zmdi zmdi-star"></i></button>
+<button type="button" class="btn btn-link text-danger"><i class="zmdi zmdi-delete"></i></button>
+</div>
+<a href="#" class="card">
+<div class="card-body">
+<div class="media">
+<div class="avatar me-3">
+<img class="avatar rounded-circle" src="assets/img/avatar3.png" alt="avatar">
+</div>
+<div class="media-body overflow-hidden">
+<div class="d-flex align-items-center mb-1">
+<h6 class="text-truncate mb-0 me-auto">Avatar 9</h6>
+</div>
+<div class="text-truncate">
+last seen 1 day ago
+</div>
+</div>
+</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+
+<div class="tab-pane fade" id="nav-tab-pages" role="tabpanel">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+<h3 class="mb-0 text-primary">Pages</h3>
+</div>
+
+<div class="card border-0">
+<ul class="list-group list-group-flush">
+<li class="list-group-item border-0 mt-3">
+<a class="link" href="pages/login.html"><i class="zmdi zmdi-label-alt me-2"></i> Login</a>
+</li>
+<li class="list-group-item border-0">
+<a class="link" href="pages/register.html"><i class="zmdi zmdi-label-alt me-2"></i> Registration</a>
+</li>
+<li class="list-group-item border-0">
+<a class="link" href="pages/password-reset.html"><i class="zmdi zmdi-label-alt me-2"></i> Reset Password</a>
+</li>
+<li class="list-group-item border-0">
+<a class="link" href="pages/settings.html"><i class="zmdi zmdi-label-alt me-2"></i> Settings</a>
+</li>
+<li class="list-group-item border-0">
+<a class="link" href="pages/single-chat.html"><i class="zmdi zmdi-label-alt me-2"></i> Single Chat Room</a>
+</li>
+<li class="list-group-item border-0">
+<a class="link" href="pages/group-chat.html"><i class="zmdi zmdi-label-alt me-2"></i> Group Chat Room</a>
+</li>
+<li class="list-group-item border-0">
+<a class="link" href="pages/audio-call.html"><i class="zmdi zmdi-label-alt me-2"></i> Audio Call Room</a>
+</li>
+<li class="list-group-item border-0">
+<a class="link" href="pages/video-call.html"><i class="zmdi zmdi-label-alt me-2"></i> Video Call Room</a>
+</li>
+ </ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="rightbar d-none d-md-block">
+
+
+<div class="nav flex-column nav-pills border-start py-xl-4 py-3 h-100">
+<a class="nav-link mb-2 text-center rightbar-link" data-toggle="pill" href="#tab-calendar"><i class="zmdi zmdi-calendar"></i></a>
+<a class="nav-link mb-2 text-center rightbar-link" data-toggle="pill" href="#tab-note"><i class="zmdi zmdi-lamp"></i></a>
+<a class="nav-link mb-2 text-center rightbar-link" data-toggle="pill" href="#tab-task"><i class="zmdi zmdi-comment-edit"></i></a>
+<a class="nav-link mb-2 text-center rightbar-link" data-toggle="pill" href="#tab-github"><i class="zmdi zmdi-github"></i></a>
+<a class="nav-link mb-2 text-center" href="#"><i class="zmdi zmdi-plus"></i></a>
+</div>
+<div class="tab-content py-xl-4 py-3 px-xl-4 px-3">
+
+<div class="tab-pane fade" id="tab-calendar" role="tabpanel">
+<div class="header border-bottom pb-4 d-flex justify-content-between">
+<div>
+<h6 class="mb-0 font-weight-bold">Calendar</h6>
+</div>
+<div>
+<button class="btn btn-link close-sidebar text-muted" type="button"><i class="zmdi zmdi-close"></i></button>
+</div>
+</div>
+<div class="body mt-4">
+<div id="mini-calendar"></div>
+</div>
+</div>
+
+<div class="tab-pane fade" id="tab-note" role="tabpanel">
+<div class="header border-bottom pb-4 d-flex justify-content-between">
+<div>
+<h6 class="mb-0 font-weight-bold">My Notes</h6>
+</div>
+<div>
+<button class="btn btn-link close-sidebar text-muted" type="button"><i class="zmdi zmdi-close"></i></button>
+</div>
+</div>
+<div class="body mt-4">
+<div class="add-note">
+<form>
+<div class="input-group mb-2">
+<textarea rows="3" class="form-control" placeholder="Enter a note here.."></textarea>
+</div>
+<button type="submit" class="btn btn-primary addnote">Add</button>
+</form>
+<ul class="list-unstyled mt-4">
+<li class="card border-0 mb-2">
+<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam non assumenda voluptate.</span>
+<button class="btn btn-sm btn-link"><i class="zmdi zmdi-delete text-danger"></i></button>
+</li>
+<li class="card border-0 mb-2">
+<span>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</span>
+<button class="btn btn-sm btn-link"><i class="zmdi zmdi-delete text-danger"></i></button>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="tab-pane fade" id="tab-task" role="tabpanel">
+<div class="header border-bottom pb-4 d-flex justify-content-between">
+<div>
+<h6 class="mb-0 font-weight-bold">My Task List</h6>
+</div>
+<div>
+<button class="btn btn-link close-sidebar text-muted" type="button"><i class="zmdi zmdi-close"></i></button>
+</div>
+</div>
+<div class="body mt-4">
+<div class="todo-list">
+<ul class="list-unstyled todo-list-items">
+<li>
+<label class="c_checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+<span class="ms-2">Lorem ipsum dolor sit amet.</span>
+</label>
+<button class="btn btn-sm btn-link" type="submit"><i class="zmdi zmdi-delete"></i></button>
+</li>
+<li>
+<label class="c_checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+<span class="ms-2">Lorem, ipsum dolor sit amet consectetur.</span>
+</label>
+<button class="btn btn-sm btn-link" type="submit"><i class="zmdi zmdi-delete"></i></button>
+</li>
+<li>
+<label class="c_checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+<span class="ms-2">Lorem ipsum dolor, sit.</span>
+</label>
+<button class="btn btn-sm btn-link" type="submit"><i class="zmdi zmdi-delete"></i></button>
+</li>
+<li>
+<label class="c_checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+<span class="ms-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</span>
+</label>
+<button class="btn btn-sm btn-link" type="submit"><i class="zmdi zmdi-delete"></i></button>
+</li>
+</ul>
+<form class="add-items">
+<div class="input-group mb-2">
+<textarea rows="3" class="form-control" placeholder="What do you need to do today?"></textarea>
+</div>
+<button class="add btn btn-primary" type="submit">Add to List</button>
+</form>
+</div>
+</div>
+</div>
+
+<div class="tab-pane fade" id="tab-github" role="tabpanel">
+<div class="header border-bottom pb-4 d-flex justify-content-between">
+<div>
+<h6 class="mb-0 font-weight-bold">My Github Activity</h6>
+<span class="text-muted">daengcoding</span>
+</div>
+<div>
+<button class="btn btn-link close-sidebar text-muted" type="button"><i class="zmdi zmdi-close"></i></button>
+</div>
+</div>
+<div class="body mt-4">
+<div class="card mb-4">
+<div class="card-body">
+<div class="row align-items-center">
+<div class="col">
+<div class="d-flex align-items-center">
+<img src="assets/img/avatar5.png" data-toggle="tooltip" title="" alt="Avatar" class="rounded-circle avatar" data-original-title="Avatar Name">
+<div class="ms-3">
+<a href="#" title="">Avatar 1</a>
+<p class="mb-0"><a href="#">info@domain.com</a></p>
+</div>
+</div>
+</div>
+
+<div class="col-auto">
+<div class="dropdown">
+<a href="#" class="btn btn-link btn-sm dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false">
+<i class="zmdi zmdi-more-vert zmdi-hc-lg"></i>
+</a>
+<div class="dropdown-menu dropdown-menu-right">
+<a href="#!" class="dropdown-item">Action</a>
+<a href="#!" class="dropdown-item">Another action</a>
+<a href="#!" class="dropdown-item">Something else here</a>
+</div>
+</div>
+</div>
+</div>
+<div class="form-group mt-3 mb-3">
+<textarea rows="3" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+</div>
+<div class="align-right">
+<button class="btn btn-primary">Push</button>
+<button class="btn btn-link"><i class="zmdi zmdi-attachment text-muted"></i></button>
+<button class="btn btn-link"><i class="zmdi zmdi-camera text-muted"></i></button>
+<button class="btn btn-link"><i class="zmdi zmdi-mood text-muted"></i></button>
+</div>
+</div>
+</div>
+<ol class="activity-feed p-0 ms-3 mb-0 pt-5">
+<li class="feed-item d-flex mb-3 pl-lg-4 ps-3" data-content="" data-time="1 day ago" data-color="yellow">
+<div class="card mb-3">
+<div class="card-body">
+<input type="checkbox" id="expand_1" name="expand_1">
+<label for="expand_1" class="mb-0">
+<b>Request</b> Lorem ipsum dolor sit.
+</label>
+<div class="feed-content">
+<p><b>comments</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+</div>
+</div>
+</div>
+</li>
+<li class="feed-item d-flex mb-3 pl-lg-4 ps-3" data-content="" data-time="2 day ago" data-color="green">
+<div class="card mb-3">
+<div class="card-body">
+<input type="checkbox" id="expand_2" name="expand_2">
+<label for="expand_2" class="mb-0">
+<b>Update</b> Lorem ipsum dolor sit.
+</label>
+<div class="feed-content">
+<p><b>comments</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+</div>
+</div>
+</div>
+</li>
+<li class="feed-item d-flex mb-3 pl-lg-4 ps-3" data-content="" data-time="January 2021" data-color="green">
+<div class="card mb-3">
+<div class="card-body">
+<input type="checkbox" id="expand_3" name="expand_3">
+<label for="expand_3" class="mb-0">
+99 contributions in private repositories
+</label>
+<div class="feed-content">
+<span><a href="#">daengcoding/chat-app-template</a> 11 commits</span>
+</div>
+</div>
+</div>
+</li>
+<li class="feed-item d-flex mb-3 pl-lg-4 ps-3" data-content="" data-time="January 2021" data-color="dark">
+<div class="card mb-3">
+<div class="card-body">
+<input type="checkbox" id="expand_4" name="expand_4">
+<label for="expand_4" class="mb-0">
+<b>DC</b> Lorem ipsum dolor sit.
+</label>
+<div class="feed-content">
+
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="main px-xl-5 px-lg-4 px-3">
+
+<div class="chat-body">
+
+<div class="chat d-flex justify-content-center align-items-center h-100 text-center py-xl-4 py-md-3 py-2">
+<div class="container-xxl">
+<div class="avatar lg avatar-bg me-auto ms-auto mb-5">
+<img class="avatar lg rounded-circle border" src="assets/img/avatar5.png" alt="" />
+<span class="a-bg-1"></span>
+<span class="a-bg-2"></span>
+</div>
+<h5 class="font-weight-bold">Hi, Daeng Coding</h5>
+<p>Start messaging.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="modal fade" id="InviteFriends" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Invite New Friends</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>Email address</label>
+<input type="email" class="form-control">
+<small id="emailHelp" class="form-text text-muted">Lorem, ipsum, dolor sit amet consectetur adipisicing.</small>
+</div>
+</form>
+<div class="mt-5">
+<button type="button" class="btn btn-primary">Send Invite</button>
+<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<script src="assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+<script src="assets/vendor/bootstrap.bundle.min.js"></script>
+
+<script src="assets/vendor/bootstrap-datepicker.min.js"></script>
+
+<script src="assets/js/template.js"></script></body>
+</html>
